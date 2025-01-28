@@ -1,0 +1,47 @@
+---
+  title: Invoice Insights API
+  summary: Invoice management and tracking API solution.
+  image: /images/projects/invoice.png
+  author: 'Niket Girdhar'
+  publishedAt: '2024-07-03'
+  presentation: https://docs.google.com/presentation/d/1XPIAQ1_2wgNwDfawbztglFNBjTStQ5NF/edit?usp=sharing&ouid=105739892992169110182&rtpof=true&sd=true
+  tech: ["Python","FastAPI","EasyOCR","Pytessaract","PIL"]
+---
+
+***This project was a part of my internshit at DigiMantra***
+
+---
+
+## Problem Statement
+
+- **Bill Classification:** Manually classifying the bills is tedious and time consuming
+- **Quantity:** Even small businesses receive large amount of bills on a daily basis
+
+---
+
+## Agenda
+
+- Automate the process using image processing and classify the bills into their respective company folders
+- Extract which ever bill you want according to the company
+- Total amount spent for a specific sector or company
+
+--- 
+
+## Technologies/APIs used
+
+- Python 3.x
+- FastAPI
+- EasyOCR
+- Pytessaract
+- PIL
+
+---
+
+## API Endpoints
+
+The Invoice Insights have 4 endpoints:
+
+- ***/uploadfile/ :*** You enter the bill image, and it classifies it as recognized or unrecognized and puts them in respective company folders
+- ***/listfolders/ :*** Lists all the available company folders in your API directory
+- ***/renamefolder/ :*** Allows you to change the company id if you wish to modify it
+- ***/totalamount/ :*** Returns you the total amount of all bills present in the company id you enter

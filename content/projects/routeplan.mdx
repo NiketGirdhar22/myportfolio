@@ -1,0 +1,48 @@
+---
+  title: Route Planning
+  summary: A route planning application to optimize travel routes and learned about API's.
+  image: /images/projects/route.jpg
+  author: 'Niket Girdhar'
+  publishedAt: '2024-06-28'
+  presentation: https://docs.google.com/presentation/d/1USwDlLaicnVRe3y0GT36rACzXAveWY3k/edit?usp=sharing&ouid=105739892992169110182&rtpof=true&sd=true
+  tech: ["Python","FastAPI","3rd party APIs"]
+---
+
+***This project was a part of my internshit at DigiMantra***
+
+---
+## Problem Statement
+
+While planning to deliver shipments from say Point A to Point B, we have a lot of paths and transportation services available, but which path will give us the least distance? Or which path takes the least time?
+
+That is something we need to find manually and it can be incorrect
+
+---
+
+## Agenda
+
+- Find all the available routes from origin to destination
+- Calculate distances and times of all routes
+- Give back the path with least distance
+
+--- 
+
+## Technologies/APIs used
+
+- Python 3.x
+- FastAPI
+- Google Maps API
+- Searoutes python library
+- Amadeus for Developers API
+- Openrouteservices API
+
+---
+
+## Structure
+
+- app.py  #had the FastAPI code to wrap the overall output 
+- routeplan  #custom library
+  - airways.py  #logic for calculating the route via air
+  - seaways.py  #logic for calculating the route via sea
+  - landways.py  #logic for calculating the route via land
+  - __init__.py

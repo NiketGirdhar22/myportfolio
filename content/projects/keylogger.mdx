@@ -1,0 +1,42 @@
+---
+  title: Keylogger - Python
+  summary: A simple Python keylogger script that logs keystrokes along with timestamps to a file after encryption and sends the logs via mail after every 60 seconds.
+  image: /images/projects/keylogger.gif
+  author: 'Niket Girdhar'
+  publishedAt: '2024-12-17'
+  Github: https://github.com/NiketGirdhar22/keylogger
+  tech: ["Python","pynput","cryptography","smtplib"]
+---
+
+***This is a personal project***
+
+---
+
+## What is a keylogger?
+
+A keylogger is a form of malware or hardware that keeps track of and records your keystrokes as you type.
+
+---
+
+## Features
+- **Keystroke Logging**: Captures keystrokes, including special keys, and timestamps each entry.
+- **Encryption**: Encrypts logs using Fernet symmetric encryption to protect captured data.
+- **Email Notification**: Sends the encrypted keystroke log via email every 60 seconds.
+- **Decryption Tool**: Allows decryption of stored logs for review.
+
+---
+
+## Technologies Used
+
+- Python 3.6+
+- Required libraries:
+  - pynput
+  - cryptography
+  - smtplib
+
+---
+
+## Notes
+- Logs are encrypted and stored in `encrypted_keystrokes.txt`.
+- Encryption keys are saved in `encryption.key` and this file is necessary for decryption.
+- Email logging is set to every 60 seconds but can be adjusted in `schedule_email()`.

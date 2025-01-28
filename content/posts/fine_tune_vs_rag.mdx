@@ -1,0 +1,69 @@
+---
+title: "Enhancing Generative AI [GenAI] models: Fine Tuning vs. RAG"
+summary: An overview of Fine Tuning vs. Retrieval Augmented Generation (RAG) techniques for enhancing Generative AI models, highlighting their strengths, limitations, and ideal use cases.
+image: "/images/posts/ragvsfine.jpeg"
+author: "Niket Girdhar"
+publishedAt: "2025-01-02"
+---
+
+
+Consumption of GenAI models like Large Language Models [LLMs] is growing exponentially, but there are still some critical challenges to address:
+
+**Model Enhancement:** Continuous improving LLMs to meet growing demands and up-to-date knowledge of the trends.
+
+**Generalisation vs. Specialisation:** Current models are very general-purpose and often require further training of specific use cases
+
+To overcome these challenges there are several approaches but two techniques stand out, ***Fine Tuning*** and ***RAG***
+
+---
+
+## Fine Tuning:
+
+Fine-tuning involves adapting a pre-trained model to a specific domain or task using specialised data so as to tailor it to perform better in certain areas.
+
+**Strengths:**
+- Provides more control over model’s behaviour and output
+- Domain Specific models obtained
+- Enhances speed and reduces costs by embedding knowledge directly into the model
+
+**Limitations:**
+- Doesn’t adapt easily to real-time data
+- Requires a large, labelled dataset for effective Fine Tuning
+- Requires extensive computational resources for larger model sizes
+
+---
+
+## Retrieval Augmented Generation [RAG]:
+
+RAG integrates external up-to-date information into the generative process. It retrieves relevant data based on the user input [input query], augments the prompt with the retrieved data and then generates the final response.
+
+**Strengths:**
+- Ideal for dynamic data sources like databases
+- Keeps the model current with real-time data
+- Reduces hallucination errors by also outputting the source of the output
+- More accurate and context-aware outputs generated
+
+**Limitations:**
+- It becomes very complex to maintain the data flow and integration 
+- Adjustment of model to work efficiently within the contextual window
+- Can introduce latency due to external data fetching
+
+---
+
+## When Not to Rely on Fine-Tuning or RAG
+
+While powerful, Fine-Tuning and RAG aren’t always the best choice:
+- **Few-Shot & Zero-Shot Learning:** Great for adapting to new tasks without extensive training data
+- **Active Learning:** Ideal when labeled data is scarce or expensive.
+- **Multimodal Models:** Perfect for applications requiring multiple types of data (e.g., text, image, audio)
+- **Model Compression:** Critical for low-latency or resource-constrained environments (mobile apps, edge devices)
+
+--- 
+
+## The Right Approach Depends on Your Use Case
+
+- ***Fine-Tuning:*** Best for specialised, stable tasks with sufficient labeled data.
+- ***RAG:*** Perfect for applications needing real-time, up-to-date information and source transparency
+- ***Other Techniques:*** Consider few-shot learning, active learning, or model distillation based on your unique needs
+
+Often, combining methods yields the best results — ensuring a robust, efficient, and adaptive AI system

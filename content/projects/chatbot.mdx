@@ -1,0 +1,48 @@
+---
+  title: Chatbot
+  summary: A basic python based sentiment analysis chatbot
+  image: /images/projects/chatbot.png
+  author: 'Niket Girdhar'
+  publishedAt: '2025-01-01'
+  Github: https://github.com/NiketGirdhar22/chatbot_python
+  tech: ["Python","FastAPI","uvicorn","nltk"]
+---
+
+***This is a personal project***
+
+---
+
+## Sentiment analysis chatbot
+
+This project implements a chatbot that classifies user input into various emotional sentiments and responds with an appropriate message based on the sentiment. The chatbot uses Natural Language Processing (NLP) techniques to detect sentiments and provide dynamic responses based on pre-trained data.
+
+---
+
+## Folder info
+
+- **`data/`**: Contains JSON files (`responses.json` and `sentiment_data.json`) that store predefined chatbot responses and sentiment data for training the sentiment classifier.
+- **`chatbot/`**: Contains the `chatbot.py` file, which includes the logic for training the sentiment classifier, preprocessing data, and generating responses.
+- **`app.py`**: The main FastAPI application that exposes an HTTP endpoint for interacting with the chatbot.
+
+---
+
+## Technologies Used
+
+- Python 3.7 or later
+- FastAPI 
+- uvicorn 
+- nltk
+
+---
+
+## Project Files
+
+- **`chatbot/chatbot.py`**: This file contains the `SentimentChatBot` class which does the following:
+  - Preprocesses the sentiment data
+  - Trains the sentiment classifier using Naive Bayes
+  - Analyzes sentiment in user input
+  - Provides an appropriate response based on sentiment classification
+
+- **`data/responses.json`**: This file contains predefined responses for various sentiments. Each sentiment (e.g., "positive", "anger", "greetings") has a list of responses that the chatbot can randomly choose from.
+
+- **`data/sentiment_data.json`**: This file contains labeled sentiment data used to train the sentiment classifier. Each sentiment label (e.g., "positive", "negative", "anger") has a list of sample sentences.

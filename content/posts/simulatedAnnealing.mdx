@@ -1,0 +1,41 @@
+---
+  title: Simulated Annealing [SA]
+  summary: Simulated Annealing (SA) is an optimization algorithm inspired by the annealing process in metallurgy, known for its ability to escape local optima and find near-global solutions in complex problems.
+  image: /images/posts/sa.png
+  author: 'Niket Girdhar'
+  publishedAt: '2024-12-27'
+  Github: https://github.com/NiketGirdhar22/simulated_annealing
+---
+
+Simulated Annealing [SA] is a powerful optimization algorithm inspired by the process of annealing in metallurgy. Known for its ability to escape local optima and find near-global solutions, SA is widely used in solving challenging optimization problems across various domains.
+
+---
+
+## Key Terms/Concepts in SA:
+
+- **Objective Function:** The cost function to minimize or maximize, representing the quality of a solution.
+- **Solution Space:** The entire set of possible solutions.
+- **Temperature (T):** A control parameter that starts high and gradually decreases to guide the search process.
+- **Cooling Schedule:** The rate at which the temperature decreases (e.g., T = T × α).
+- **Neighboring Solution:** A slightly modified version of the current solution, ensuring exploration of the solution space.
+- **Acceptance Probability:** Determines whether a worse solution is accepted, calculated as  
+  `P = e^(-Δf / T)`
+- **Exploration vs. Exploitation:** Balancing the search for new solutions (exploration) with refinement of current solutions (exploitation).
+
+---
+
+## Applications of SA:
+
+- **Traveling Salesman Problem (TSP):** Finding the shortest route that visits all cities and returns to the starting point.
+- **Resource Allocation:** Efficient distribution of limited resources.
+- **Job Scheduling:** Optimizing task assignments to minimize time or cost.
+- **Portfolio Optimization:** Allocating investments to maximize returns while minimizing risks.
+- **Control System Design:** Tuning system parameters for optimal performance.
+
+---
+
+## Advantages of SA:
+
+- Highly effective for large, complex, and nonlinear optimization problems.
+- Can escape local optima to find near-global solutions.
+- Flexible and adaptable, requiring minimal problem-specific knowledge.

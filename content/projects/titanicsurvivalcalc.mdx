@@ -1,0 +1,44 @@
+---
+  title: Titanic Survival Calculator
+  summary: R based application that takes in few parameters and predicts the survival rate if the person was travelling in Titanic.
+  image: /images/projects/titanic.jpeg
+  author: 'Niket Girdhar'
+  publishedAt: '2024-11-12'
+  Github: https://github.com/NiketGirdhar22/Titanic_Survival_Calculator
+  tech: ["R","shiny","dpylr","ggplot2"]
+---
+
+***This is a personal project***
+
+---
+
+## Titanic Survival Prediction Shiny App
+
+This Shiny app allows users to predict the survival probability of a Titanic passenger based on selected features, such as ticket class, gender, age, and embarkation port. The app utilizes a logistic regression model trained on the Titanic dataset to predict the likelihood of survival.
+
+---
+
+## Features
+
+- **Survival Prediction**: Input a passenger's ticket class, gender, age, and embarkation port to predict their survival status (Yes/No).
+- **Visualizations**: View various plots that provide insights into survival rates:
+  - Survival rate by ticket class.
+  - Survival rate by gender and class.
+  - Age distribution by ticket class and survival status.
+  - Model coefficients that were used to train the logistic regression model.
+
+---
+
+## Technologies Used
+
+- R 
+- R packages
+    - shiny
+    - dpylr
+    - ggplot2
+
+---
+
+### Interpretation of Results:
+- **Prediction**: The app displays whether the passenger is predicted to survive or not based on the logistic regression model.
+- **Model Coefficients Plot**: This plot shows the coefficients of the logistic regression model. Positive coefficients increase the probability of survival, while negative coefficients decrease it.
