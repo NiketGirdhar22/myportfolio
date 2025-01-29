@@ -1,5 +1,5 @@
-import Patents from '../../components/patents'
-import { getPatents } from '../../lib/patents'
+import Patents from '@/components/patents'
+import { getPatents } from '@/lib/patents'
 
 export default async function PatentsPage() {
   const patents = await getPatents()

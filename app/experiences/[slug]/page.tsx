@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { formatDate } from '../../../lib/utils'
-import MDXContent from '../../../components/mdx-content'
-import { getExperiences, getExperienceBySlug } from '../../../lib/experiences'
+import { formatDate } from '@/lib/utils'
+import MDXContent from '@/components/mdx-content'
+import { getExperiences, getExperienceBySlug } from '@/lib/experiences'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import { notFound } from 'next/navigation'
-import RedirectButton from '../../../components/RedirectButton'
-import { Button } from '../../../components/ui/button'
+import RedirectButton from '@/components/RedirectButton'
+import { Button } from '@/components/ui/button'
 
 export async function generateStaticParams() {
   const experiences = await getExperiences()

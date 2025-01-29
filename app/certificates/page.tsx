@@ -1,5 +1,5 @@
-import Certificates from '../../components/certificates'
-import { getCertificates } from '../../lib/certificates'
+import Certificates from '@/components/certificates'
+import { getCertificates } from '@/lib/certificates'
 
 export default async function CertificatesPage() {
   const certificates = await getCertificates()

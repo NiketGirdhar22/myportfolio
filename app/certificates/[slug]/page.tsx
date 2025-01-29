@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { formatDate } from '../../../lib/utils'
-import MDXContent from '../../../components/mdx-content'
+import { formatDate } from '@/lib/utils'
+import MDXContent from '@/components/mdx-content'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
-import { getCertificateBySlug, getCertificates } from '../../../lib/certificates'
+import { getCertificateBySlug, getCertificates } from '@/lib/certificates'
 import { notFound } from 'next/navigation'
-import RedirectButton from '../../../components/RedirectButton'
-import { Button } from '../../../components/ui/button'
+import RedirectButton from '@/components/RedirectButton'
+import { Button } from '@/components/ui/button'
 
 export async function generateStaticParams() {
   const certificates = await getCertificates()

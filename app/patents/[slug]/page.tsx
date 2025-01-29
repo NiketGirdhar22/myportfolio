@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { formatDate } from '../../../lib/utils'
-import MDXContent from '../../../components/mdx-content'
+import { formatDate } from '@/lib/utils'
+import MDXContent from '@/components/mdx-content'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
-import { getPatentBySlug, getPatents } from '../../../lib/patents'
+import { getPatentBySlug, getPatents } from '@/lib/patents'
 import { notFound } from 'next/navigation'
-import RedirectButton from '../../../components/RedirectButton'
 
 export async function generateStaticParams() {
   const patents = await getPatents()

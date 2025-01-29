@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { formatDate } from '../../../lib/utils'
-import MDXContent from '../../../components/mdx-content'
-import { getPosts, getPostBySlug } from '../../../lib/posts'
+import { formatDate } from '@/lib/utils'
+import MDXContent from '@/components/mdx-content'
+import { getPosts, getPostBySlug } from '@/lib/posts'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import { notFound } from 'next/navigation'
-import RedirectButton from '../../../components/RedirectButton'
+import RedirectButton from '@/components/RedirectButton'
 
 export async function generateStaticParams() {
   const posts = await getPosts()

@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { ProjectMetadata } from '../lib/projects'
+import { ProjectMetadata } from '@/lib/projects'
 
-import Projects from '../components/projects'
-import { Input } from '../components/ui/input'
-import { Button } from '../components/ui/button'
+import Projects from '@/components/projects'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 import { Cross2Icon } from '@radix-ui/react-icons'
 
 export default function ProjectsWithSearch({ projects }: { projects: ProjectMetadata[] }) {

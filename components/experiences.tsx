@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { ExperienceMetadata } from '../lib/experiences'
-import { formatDate } from '../lib/utils'
+import { ExperienceMetadata } from '@/lib/experiences'
+import { formatDate } from '@/lib/utils'
 
 export default function Experiences({ experiences }: { experiences: ExperienceMetadata[] }) {
   return (

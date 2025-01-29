@@ -1,8 +1,8 @@
 import { JSX } from 'react'
 import { highlight } from 'sugar-high'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
-import RedirectButton from '../components/RedirectButton'
-import '../styles/globals.css';
+import RedirectButton from '@/components/RedirectButton'
+import '@/app/globals.css';
 
 function Code({ children, ...props }: any) {
   let codeHTML = highlight(children)

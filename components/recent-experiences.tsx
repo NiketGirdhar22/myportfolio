@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { getExperiences } from '../lib/experiences'
-import Experiences from '../components/experiences'
+import { getExperiences } from '@/lib/experiences'
+import Experiences from '@/components/experiences'
 
 export default async function Recentexperiences() {
   const experiences = await getExperiences(4)

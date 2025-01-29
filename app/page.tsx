@@ -1,9 +1,9 @@
-import Intro from '../components/intro'
-import RecentPosts from '../components/recent-posts'
-import RecentProjects from '../components/recent-projects'
-import RecentCertificates from '../components/recent-certificates'
-import RecentExperiences from '../components/recent-experiences'
-import RecentPatents from '../components/recent-patents'
+import Intro from '@/components/intro'
+import RecentPosts from '@/components/recent-posts'
+import RecentProjects from '@/components/recent-projects'
+import RecentCertificates from '@/components/recent-certificates'
+import RecentExperiences from '@/components/recent-experiences'
+import RecentPatents from '@/components/recent-patents'
 
 export default function Home() {
   return (

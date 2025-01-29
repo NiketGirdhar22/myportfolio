@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { PostMetadata } from '../lib/posts'
-import { formatDate } from '../lib/utils'
+import { PostMetadata } from '@/lib/posts'
+import { formatDate } from '@/lib/utils'
 
 export default function Posts({ posts }: { posts: PostMetadata[] }) {
   return (

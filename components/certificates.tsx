@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CertificateMetadata } from '../lib/certificates'
-import { formatDate } from '../lib/utils'
+import { CertificateMetadata } from '@/lib/certificates'
+import { formatDate } from '@/lib/utils'
 
 export default function Certificates({
   certificates

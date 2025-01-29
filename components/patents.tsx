@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { PatentMetadata } from '../lib/patents'
-import { formatDate } from '../lib/utils'
+import { PatentMetadata } from '@/lib/patents'
+import { formatDate } from '@/lib/utils'
 
 export default function Patents({
   patents

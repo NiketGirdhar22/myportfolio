@@ -1,5 +1,5 @@
-import ProjectsWithSearch from '../../components/projects-with-search'
-import { getProjects } from '../../lib/projects'
+import ProjectsWithSearch from '@/components/projects-with-search'
+import { getProjects } from '@/lib/projects'
 
 
 export default async function ProjectsPage() {

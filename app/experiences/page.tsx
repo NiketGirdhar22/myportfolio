@@ -1,5 +1,5 @@
-import Experiences from '../../components/experiences'
-import { getExperiences } from '../../lib/experiences'
+import Experiences from '@/components/experiences'
+import { getExperiences } from '@/lib/experiences'
 
 export default async function ExperiencePage() {
   const experiences = await getExperiences()

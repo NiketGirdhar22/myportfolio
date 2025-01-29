@@ -1,5 +1,5 @@
-import { Button } from '../../components/ui/button'
-import RedirectButton from '../../components/RedirectButton'
+import { Button } from '@/components/ui/button'
+import RedirectButton from '@/components/RedirectButton'
 
 export default function Resume() {
   return (

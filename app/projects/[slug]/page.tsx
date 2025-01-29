@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { formatDate } from '../../../lib/utils'
-import MDXContent from '../../../components/mdx-content'
+import { formatDate } from '@/lib/utils'
+import MDXContent from '@/components/mdx-content'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
-import { getProjectBySlug, getProjects } from '../../../lib/projects'
+import { getProjectBySlug, getProjects } from '@/lib/projects'
 import { notFound } from 'next/navigation'
-import RedirectButton from '../../../components/RedirectButton'
+import RedirectButton from '@/components/RedirectButton'
 
 export async function generateStaticParams() {
   const projects = await getProjects()
