@@ -16,7 +16,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Niket Girdhar',
-  description: 'NT'
+  description: 'Niket Girdhar - NT',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -26,6 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body
         className={cn(
           'flex min-h-screen flex-col font-sans antialiased',
