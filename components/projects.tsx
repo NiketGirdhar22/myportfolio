@@ -38,9 +38,9 @@ export default function Projects({
               <div className='line-clamp-8 text-sm text-muted-foreground'>
                 {project.tech && project.tech.length > 0 && (
                   <div className='mt-6 flex flex-wrap gap-2'>
-                    {project.tech.map((skill, index) => (
+                    {project.tech.map((tech, index) => (
                       <Button key={index} variant="outline">
-                        {skill}
+                        {tech}
                       </Button>
                     ))}
                   </div>

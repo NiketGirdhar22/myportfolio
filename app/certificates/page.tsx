@@ -1,4 +1,4 @@
-import Certificates from '@/components/certificates'
+import CertificatesWithSearch from '@/components/certificates-with-search'
 import { getCertificates } from '@/lib/certificates'
 
 export default async function CertificatesPage() {
@@ -9,7 +9,7 @@ export default async function CertificatesPage() {
       <div className='container max-w-3xl'>
         <h1 className='title mb-12'>Certificates</h1>
 
-        <Certificates certificates={certificates} />
+        <CertificatesWithSearch certificates={certificates} />
       </div>
     </section>
   )

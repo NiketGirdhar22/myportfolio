@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CertificateMetadata } from '@/lib/certificates'
 import { formatDate } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 
 export default function Certificates({
   certificates
@@ -34,6 +35,17 @@ export default function Certificates({
                 <p className='line-clamp-1 text-sm text-muted-foreground'>
                   {certificate.By}
                 </p>
+                <div className='line-clamp-8 text-sm text-muted-foreground'>
+                {certificate.skills && certificate.skills.length > 0 && (
+                  <div className='mt-6 flex flex-wrap gap-2'>
+                    {certificate.skills.map((skill, index) => (
+                      <Button key={index} variant="outline">
+                        {skill}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </div>
                 <p className='text-xs font-light text-muted-foreground'>
                   {formatDate(certificate.publishedAt ?? 'Unknown date')}
                 </p>

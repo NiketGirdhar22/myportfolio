@@ -1,18 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { ProjectMetadata } from '@/lib/projects'
+import { CertificateMetadata } from '@/lib/certificates'
 
-import Projects from '@/components/projects'
+import Certificates from '@/components/certificates'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Cross2Icon } from '@radix-ui/react-icons'
 
-export default function ProjectsWithSearch({ projects }: { projects: ProjectMetadata[] }) {
+export default function CertificatesWithSearch({ certificates }: { certificates: CertificateMetadata[] }) {
   const [query, setQuery] = useState('')
   
-  const filtered = projects.filter(project =>
-    project.tech?.some(skill =>
+  const filtered = certificates.filter(certificate =>
+    certificate.skills?.some(skill =>
       skill.toLowerCase().includes(query.toLowerCase())
     ) ?? false
   )
@@ -28,7 +28,7 @@ export default function ProjectsWithSearch({ projects }: { projects: ProjectMeta
       <div className='mb-12 flex items-center gap-3'>
         <Input
           type='text'
-          placeholder='Search projects by tech...'
+          placeholder='Search projects by skill...'
           className='h-9 w-full sm:w-1/2'
           value={query}
           onChange={e => setQuery(e.target.value)}
@@ -46,7 +46,7 @@ export default function ProjectsWithSearch({ projects }: { projects: ProjectMeta
         )}
       </div>
 
-      <Projects projects={filtered} />
+      <Certificates certificates={filtered} />
     </div>
   )
 }
