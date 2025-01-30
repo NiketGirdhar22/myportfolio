@@ -18,9 +18,12 @@ export const metadata: Metadata = {
   title: 'Niket Girdhar',
   description: 'Niket Girdhar - NT',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: '/favicon.png',
   },
-
   openGraph: {
     title: 'Niket Girdhar',
     description: 'Niket Girdhar - NT',
@@ -44,7 +47,9 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body
         className={cn(
