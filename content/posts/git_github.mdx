@@ -25,7 +25,7 @@ There are two major types of version control systems:
 
 ---
 
-## What is Git?
+# What is Git?
 
 Git is a free and open-source DVCS that allows users around the world to work on the same project. Users can sync their changes with a remote server and collaborate without losing data. Git is the most popular VCS due to its distributed nature.
 
@@ -36,7 +36,7 @@ Git is a free and open-source DVCS that allows users around the world to work on
   
 ---
 
-## What is GitHub?
+# What is GitHub?
 
 GitHub is a web service that makes using Git easier. It provides hosting for Git repositories, with additional collaboration tools such as pull requests and issue tracking. Other alternatives include GitLab and Bitbucket.
 
@@ -65,5 +65,34 @@ GitHub is a web service that makes using Git easier. It provides hosting for Git
 7. **Merge**: After review, merge the changes into the main branch.
 
 ---
+
+## Basic Git Commands for daily used
+
+### Initializing a Git Repository
+```sh
+git init  # Creates a new repository and sets up all the necessary files and data structures for version control.
+```
+
+### Adding Files to Staging Area
+```sh
+git add <filename>  # Adds a specific file from the working directory to the staging area.
+git add .           # Adds all modified and new files from the working directory to the staging area.
+git add -A          # Stages all changes (including deletions) from the working directory.
+```
+
+### Committing Changes
+```sh
+git commit -m "commit message"  # Takes a snapshot of the changes in the staging area and stores it with a descriptive message.
+```
+
+### Cloning a Repository
+```sh
+git clone <repository URL>  # Creates a local copy of a remote repository.
+```
+
+### Pushing Local Changes to Remote Repository
+```sh
+git push origin <branch-name>  # Pushes local commits to the specified remote branch.
+```
 
 With Git, collaboration becomes simpler and more flexible, allowing multiple developers to work on the same project with ease.
