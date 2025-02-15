@@ -1,0 +1,149 @@
+---
+  title: REST APIs - Guide
+  summary: RestAPIs are most widely used API framework and this is a breif description about what REST APIs are.
+  image: /images/posts/restapi.png
+  author: 'Niket Girdhar'
+  publishedAt: '2025-02-15'
+---
+
+## What are APIs?
+
+Application Programming Interfaces or APIs for short are a certain set of rules that allows different software programs to communicate with each other. APIs are used to exchange data and perform actions.
+APIs have become the core of modern web applications.
+
+---
+
+## REST APIs
+
+REpresentational State Transfer APIs- REST APIs are among various API framework but this is widely used because of its simplicity, scalability and efficiency.
+
+A REST API is a set of rules that allows communication between client and server over the internet. It follows the principles of REST (Representational State Transfer), which defines how resources should be structured and accessed.
+
+REST APIs use standard HTTP methods to perform CRUD (Create, Read, Update, Delete) operations on resources. These operations map to:
+
+- GET
+    - Purpose: Retrieve data from the server
+    - Idempotent: Yes
+    - Typical Use Case: Fetching resources
+- POST 
+    - Purpose: Create new resources
+    - Idempotent: No
+    - Typical Use Case: Creating a new user or resource
+- PUT 
+    - Purpose: Replace/update the entire resource
+    - Idempotent: Yes
+    - Typical Use Case: Full update of a resource (e.g., user data)
+- DELETE 
+    - Purpose: Remove a resource
+    - Idempotent: Yes
+    - Typical Use Case: Deleting a resource
+- PATCH
+    - Purpose: Partially update a resource
+    - Idempotent: No
+    - Typical Use Case: Updating specific fields of a resource
+- HEAD
+    - Purpose: Retrieve headers (no body)
+    - Idempotent: No
+    - Typical Use Case: Checking for resource existence or metadata
+- OPTIONS 
+    - Purpose: Determine allowed HTTP methods for a resource
+    - Idempotent: Yes
+    - Typical Use Case: Discovering supported methods for a resource
+
+***NOTE: Idempotent methods are those which are safe to call multiple times without causing unintended side effects. This means that performing the same request multiple times will not change the state of the resource after the first request.***
+
+---
+
+## Why use REST APIs?
+
+REST APIs offer several benefits, making them the preferred choice for developers:
+
+- Scalability – They allow applications to scale by efficiently handling multiple requests.
+- Statelessness – Each request from the client contains all the necessary information, reducing server load.
+- Flexibility – REST APIs can be used with different programming languages and databases.
+- Standardization – Uses widely adopted HTTP methods and status codes for communication.
+- Interoperability – REST APIs allow different systems to communicate seamlessly.
+
+---
+
+## How Does a REST API Work?
+
+A REST API typically follows these steps:
+
+- Client Sends a Request – A client (web app, mobile app, or another server) sends an HTTP request to the API endpoint.
+- Server Processes the Request – The API processes the request, interacts with the database (if needed), and prepares a response.
+- Server Sends a Response – The API returns the response in JSON or XML format, along with an HTTP status code.
+
+### Sample Request and Response of a REST API: 
+
+- Request
+```
+GET /users/123 HTTP/1.1
+Host: api.example.com
+Authorization: Bearer <token>
+```
+
+- Response
+```
+{
+  "id": 123,
+  "name": "John Doe",
+  "email": "johndoe@example.com"
+}
+```
+
+---
+
+## API Response Codes
+
+- ```200 OK``` → Request successful
+- ```201 Created``` → New resource created
+- ```400 Bad Request``` → Client error
+- ```401 Unauthorized``` → Authentication required
+- ```404 Not Found``` → Resource doesn’t exist
+- ```500 Internal Server Error``` → Server-side issue
+
+---
+
+## Building REST APIs using Python
+
+- Install Flask
+```
+pip install flask
+```
+- Create python script for API [Example app.py]
+```
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+# Sample data
+users = [
+    {"id": 1, "name": "Alice"},
+    {"id": 2, "name": "Bob"}
+]
+
+# Get all users
+@app.route('/users', methods=['GET'])
+def get_users():
+    return jsonify(users)
+
+# Get a single user by ID
+@app.route('/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = next((u for u in users if u["id"] == user_id), None)
+    return jsonify(user) if user else ("User not found", 404)
+
+# Run the API
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+- Run the script
+```
+python app.py
+```
+- Check the API endpoints at: ```http://127.0.0.1:5000/users``` to see the API response
+
+***You can use FastAPI instead of Flask which is faster and more High-Performance based on requirements and user***
+
+---
