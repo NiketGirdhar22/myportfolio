@@ -60,11 +60,18 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <div className='mt-8 md:order-1 md:mt-0'>
-            <p className='text-center text-xs leading-5 text-muted-foreground'>
-              &copy; {new Date().getFullYear()} Niket Girdhar - NT
-            </p>
-          </div>
+          <div className="mt-8 md:order-1 md:mt-0">
+  <p className="text-center text-xs leading-5 text-muted-foreground">
+    &copy; {new Date().getFullYear()} Niket Girdhar - NT
+  </p>
+</div>
+
+<div className="mt-8 md:order-1 md:mt-0 text-center">
+  <p className="text-xs leading-5 text-muted-foreground">
+    <strong>Contact:</strong> niketgirdhar2004@gmail.com | +91 9780050565
+  </p>
+</div>
+
         </div>
       </div>
     </footer>
