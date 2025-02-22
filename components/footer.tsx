@@ -2,6 +2,41 @@ import { JSX, SVGProps } from 'react'
 
 const navigation = [
   {
+    name: 'Email',
+    href: 'mailto:niketgirdhar2004@gmail.com',
+    icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+      <svg fill="currentColor" viewBox="0 0 24 24" className="h-4 w-4" {...props}>
+        <rect 
+          x="3" 
+          y="5" 
+          width="18" 
+          height="14" 
+          rx="1" 
+          style={{ fill: "none", strokeWidth: 2 }} 
+          className="stroke-current dark:stroke-white stroke-black"
+        />
+        <path 
+          d="M21,6V8l-9,5L3,8V6A1,1,0,0,1,4,5H20A1,1,0,0,1,21,6Z" 
+          style={{ fill: "none", strokeWidth: 2 }} 
+          className="stroke-current dark:stroke-white stroke-black"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: 'Contact',
+    href: 'tel:+919780050565',
+    icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+      <svg fill="currentColor" viewBox="0 0 24 24" className="h-4 w-4" {...props}>
+        <path
+          fillRule="evenodd"
+          d="M19.907 15.234l-2.826-2.827a1 1 0 0 0-1.414 0l-1.456 1.457a1 1 0 0 0 0 1.415l4.081 4.08a1 1 0 0 0 1.414 0l2.276-2.275a1 1 0 0 0 0-1.414l-3.108-3.107a1 1 0 0 0-1.414 0zM4.094 8.03l3.107 3.107a1 1 0 0 0 1.414 0l1.456-1.457a1 1 0 0 0 0-1.415L5.83 3.68a1 1 0 0 0-1.414 0L2.14 5.957a1 1 0 0 0 0 1.414l4.08 4.08a1 1 0 0 0 1.414 0l1.457-1.456a1 1 0 0 0 0-1.415L4.094 8.03z"
+          clipRule="evenodd"
+        />
+      </svg>
+    ),
+  },  
+  {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/niket-girdhar-068858250/',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
@@ -66,14 +101,12 @@ export default function Footer() {
   </p>
 </div>
 
-<div className="mt-8 md:order-1 md:mt-0 text-center">
-  <p className="text-xs leading-5 text-muted-foreground">
-    <strong>Contact:</strong> niketgirdhar2004@gmail.com | +91 9780050565
-  </p>
-</div>
-
         </div>
       </div>
     </footer>
   )
 }
+
+
+
+
