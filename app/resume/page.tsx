@@ -70,12 +70,6 @@ export default function Resume() {
               className="transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-md shadow-neutral-300 dark:shadow-neutral-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               variant="outline"
             >
-              LLMs
-            </Button>
-            <Button
-              className="transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-md shadow-neutral-300 dark:shadow-neutral-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-              variant="outline"
-            >
               Data Visualization
             </Button>
             <Button
