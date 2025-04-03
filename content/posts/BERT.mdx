@@ -1,0 +1,84 @@
+---
+  title: BERT - Bidirectional Encoder Representations from Transformers
+  summary: BERT is a transformer-based model that uses bidirectional self-attention for improved language understanding and task-specific fine-tuning.
+  image: /images/posts/bert.png
+  author: 'Niket Girdhar'
+  publishedAt: '2025-04-04'
+---
+
+## BERT
+
+BERT (Bidirectional Encoder Representations from Transformers) has transformed how we approach natural language understanding. Developed by Google, this powerful model has a unique architecture that helps machines grasp the full context of language. 
+
+Here’s a quick breakdown of its key features:
+- ***Bidirectional:*** BERT reads text both left-to-right and right-to-left, capturing richer context for better word understanding.
+- ***Auto-encoding:*** Unlike autoregressive models, BERT predicts missing words in a sentence based on surrounding context.
+- ***Self-attention:*** It understands relationships between words regardless of their position in the sentence, thanks to self-attention.
+- ***Transformer-based:*** By leveraging the Transformer encoder, BERT processes text in parallel for efficiency and power.
+
+---
+
+**Key Components:**
+- `[CLS]` Token: Represents the entire input sequence and is used in classification tasks.
+- `[SEP]` Token: Separates two sequences, enabling tasks like question answering and sentence pair classification.
+- ***Wordpiece Tokenizer:*** Breaks down unknown words into smaller subword units, enhancing vocabulary flexibility.
+
+---
+
+**BERT Models come in various sizes for different use cases:**
+- BERT-small: 15M parameters
+- BERT-base: 110M parameters
+- BERT-large: 340M parameters
+
+---
+
+### Derivatives of BERT
+
+BERT’s influence has also given rise to powerful derivatives like RoBERTa, DistilBERT, and ALBERT, which fine-tune its architecture for even greater performance.
+
+- **RoBERTa (Robustly Optimized BERT Approach)**
+    - Trained on 10x the data compared to BERT 
+    - Increased parameters by 15% for better performance
+    - Removed the Next Sentence Prediction (NSP) task
+    - Dynamic Masking: 4x the masking tasks for better learning
+
+- **DistilBERT**
+    - A lightweight version with 40% fewer parameters 
+    - 60% faster than BERT while maintaining 97% of its performance
+    - Utilizes Knowledge Distillation for model efficiency
+
+- **ALBERT (A Lite BERT)**
+    - 90% fewer parameters than BERT 
+    - Factorized embedding parameterization for compactness
+    - Introduced the Sentence Order Prediction (SOP) task for pre-training
+Each derivative optimizes BERT’s architecture or pre-training process to tackle a range of NLP problems more efficiently.
+
+---
+
+## Pre-Training and Fine-Tuning BERT
+
+### Pre-Training BERT
+
+BERT is pre-trained on two crucial tasks:
+- Masked Language Model (MLM): Predicting masked words in a sentence (e.g., "Istanbul is a great [MASK] to visit.")
+- Next Sentence Prediction (NSP): Determining if sentence B follows sentence A in a document (e.g., Is "I was just there" the next sentence after "Istanbul is a great city to visit"?)
+
+These pre-training tasks help BERT understand word meanings and sentence relationships before fine-tuning for specific tasks.
+
+### Fine-Tuning BERT for NLP Tasks
+
+Once pre-trained, BERT can be fine-tuned for specific tasks such as:
+- ***Sequence Classification:*** Predict sentiment or categorize text
+- ***Token Classification:*** Identify named entities or parts of speech
+- ***Question Answering:*** Match questions with the correct answers in a given context
+
+---
+
+Use Cases for BERT:
+
+- Text classification
+- Question answering
+- Sequence labeling
+- Sentence similarity detection
+
+BERT and its derivatives are transforming the landscape of NLP, enabling more powerful and efficient language models.
