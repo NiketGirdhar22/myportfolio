@@ -28,7 +28,7 @@ export default async function Project({
   }
 
   const { metadata, content } = project
-  const { title, image, author, publishedAt,Github, presentation } = metadata
+  const { title, image, author, publishedAt,Github, presentation,blog } = metadata
 
   return (
     <section className='pb-24 pt-32'>
@@ -46,7 +46,7 @@ export default async function Project({
             <Image
               src={image}
               alt={title || ''}
-              className='object-cover'
+              className='object-contain'
               fill
             />
           </div>
@@ -69,6 +69,9 @@ export default async function Project({
         )}
         {presentation && (
             <RedirectButton redirectUrl={presentation} label="Check the Presentation" />
+        )}
+        {blog && (
+            <RedirectButton redirectUrl={blog} label="Check the Project Blog" />
         )}
         </footer>
       </div>

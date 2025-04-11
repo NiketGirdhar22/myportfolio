@@ -16,6 +16,7 @@ export type ProjectMetadata = {
   author?: string
   publishedAt?: string
   Github?: string
+  blog?: string
   presentation?: string
   tech?: string[]
   slug: string
