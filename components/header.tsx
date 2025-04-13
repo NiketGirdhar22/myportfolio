@@ -74,6 +74,9 @@ export default function Header() {
               <Link href="/certificates">Certifications</Link>
             </li>
             <li className="transition-colors hover:text-foreground hover:border-b-2 hover:border-gray-300 hover:bg-transparent transition-all duration-500">
+              <Link href="/events">Events</Link>
+            </li>
+            <li className="transition-colors hover:text-foreground hover:border-b-2 hover:border-gray-300 hover:bg-transparent transition-all duration-500">
             <Link href="/patents">Patents</Link>
           </li>
           </ul>

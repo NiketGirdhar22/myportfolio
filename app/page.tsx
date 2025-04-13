@@ -4,6 +4,7 @@ import RecentProjects from '@/components/recent-projects'
 import RecentCertificates from '@/components/recent-certificates'
 import RecentExperiences from '@/components/recent-experiences'
 import RecentPatents from '@/components/recent-patents'
+import RecentEvents from '@/components/recent-events'
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
         <RecentProjects />
         <RecentCertificates />
         <RecentExperiences />
+        <RecentEvents />
         <RecentPatents />
+
 
       </div>
     </section>
