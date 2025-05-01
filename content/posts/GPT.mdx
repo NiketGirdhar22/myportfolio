@@ -1,0 +1,89 @@
+---
+  title: GPT – Generative Pre-trained Transformers  
+  summary: GPT is a decoder-only, autoregressive language model built on the Transformer architecture. It predicts the next token in a sequence and powers state-of-the-art natural language generation.  
+  image: /images/posts/GPT.png
+  author: 'Niket Girdhar'
+  publishedAt: '2025-05-02'
+---
+
+## GPT
+
+GPT (Generative Pre-trained Transformer) is an autoregressive language model that has become a cornerstone in natural language generation. Developed by OpenAI, GPT is built using only the decoder blocks of the Transformer architecture, enabling it to generate text by predicting one token at a time based on prior context.
+
+Here’s what makes GPT powerful:
+
+- ***Autoregressive:*** GPT generates the next token using only the leftward (past) context, ideal for generation tasks like storytelling or conversation.  
+- ***Decoder-only Transformer:*** Unlike encoder-based models like BERT, GPT uses masked self-attention to prevent access to future tokens during training.  
+- ***Self-Attention:*** Utilizes scaled dot-product attention to understand token relationships across long sequences.  
+- ***Byte-level Tokenization:*** Allows flexibility in handling multiple languages and special characters by encoding text at the byte level.
+
+---
+
+**Key Components:**
+- `<|endoftext|>` Token: Special token used to mark the end of a sequence.  
+- ***Token & Positional Embeddings:*** Combines context-free token embeddings and position embeddings to represent input.  
+- ***No Segment Embeddings:*** GPT treats the input as a single continuous sequence, unlike BERT which splits into segments (A and B).
+
+---
+
+**GPT Models (Parameter Counts):**
+- GPT-1: 117M parameters  
+- GPT-2: 1.5B parameters  
+    - Small (117M)
+    - Medium (345M)
+    - Large (762M)
+    - XL (1542M)  
+- GPT-3: 175B parameters
+
+---
+
+## Pre-Training GPT
+
+GPT is pre-trained on a massive dataset using an autoregressive objective — predicting the next word in a sequence. Unlike BERT, GPT doesn’t use tasks like Masked Language Modeling or Next Sentence Prediction.
+
+### Pre-Training Objective:
+- ***Causal Language Modeling (CLM):*** Predicts the next token in a sentence by only attending to past tokens, enabling powerful generative capabilities.  
+- Trained on **WebText**, a 40GB dataset scraped from Reddit — introducing vast but sometimes biased data.
+
+---
+
+## Few-Shot, One-Shot, and Zero-Shot Learning
+
+GPT models excel in flexible learning paradigms:
+
+- **Zero-shot:** Perform a task with no examples  
+- **One-shot:** Perform a task after seeing one example  
+- **Few-shot:** Learn from a handful (2–10) of examples within the context window
+
+Context length for GPT-2: 1024 tokens
+
+---
+
+## Fine-Tuning & Inference Parameters
+
+GPT models can be fine-tuned for tasks like style imitation, code generation, or dialogue. Generation can be controlled using hyperparameters:
+
+- `temperature` – randomness/creativity  
+- `top_k`, `top_p` – token sampling constraints  
+- `beams`, `do_sample` – deterministic vs. stochastic generation  
+- `repetition_penalty`, `presence_penalty` – reduce repetition and encourage novelty  
+- `stop_sequence` – define stopping points for output
+
+---
+
+## Limitations: Overfitting & Bias
+
+GPT models are highly expressive and prone to **overfitting**, often memorizing text and exhibiting **narrow generalization**. Additionally, biases from the training data can manifest during generation. These challenges require careful model design, dataset curation, and tuning.
+
+---
+
+## Use Cases for GPT:
+
+- Text generation  
+- Code completion  
+- Dialogue systems  
+- Content summarization  
+- Few-shot classification  
+- Creative writing & storytelling
+
+With its flexible decoder-based architecture and few-shot learning ability, GPT continues to push the boundaries of what language models can do.
