@@ -12,7 +12,7 @@ export default function Resume() {
       <div className='mt-2 flex-1 md:mt-0'>
         <h1 className='title no-underline'>About Me</h1>
         <p className='mt-3 font-light text-muted-foreground text-justify'>
-        A highly motivated and skilled Computer and Electronics Engineering student with a solid foundation in both hardware and software systems. Demonstrated expertise in web development, and programming, coupled with a strong passion for innovative technological solutions. Experienced in managing promotional campaigns for collage clubs and developing functional, service-oriented websites. Recognized for exceptional problem-solving abilities, meticulous attention to detail, and a collaborative approach to cross-disciplinary projects.
+        A highly motivated and skilled Computer and Electronics Engineering student with a solid foundation in both hardware and software systems. Demonstrated expertise in web development, and programming, coupled with a strong passion for innovative technological solutions. Experienced in managing promotional campaigns for college clubs and developing functional, service-oriented websites. Recognized for exceptional problem-solving abilities, meticulous attention to detail, and a collaborative approach to cross-disciplinary projects.
         </p>
       </div>
       <div className='relative'>
