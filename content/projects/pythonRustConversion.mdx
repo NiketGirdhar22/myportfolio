@@ -1,0 +1,59 @@
+---
+  title: Python-to-Rust Function Conversion Model
+  summary: Fine-Tune a model which is capable of python to rust function conversion 
+  image: /images/projects/pythonRust.png
+  author: 'Niket Girdhar'
+  publishedAt: '2025-06-21'
+  presentation: https://drive.google.com/file/d/1EAVIeueApTsISSgqoqi3VwzfNntF-04J/view?usp=sharing
+  tech: ["Python","Flask","transformers","RL"]
+---
+
+***This project was a part of my internshit at Five Angstrom***
+
+---
+
+## Problem Statement
+
+Python and Rust are fundamentally different: Python is dynamically typed and interpreted, while Rust is statically typed and compiled. This makes direct function translation between the two challenging. Key differences include typing, memory management, syntax, and error handling. The goal is to build a model that can convert Python functions into safe, efficient, and idiomatic Rust code.
+
+---
+
+## What I did
+
+- Researching about the available models out there 
+- Dataset creation and unit testing
+- Fine-tuning Encoder-Decoder based Model
+- Applying Reinforcement Learning and compared the results
+
+---
+
+## Agenda
+
+The model aims to:
+
+- **Parse Python Functions:** Understand and extract the logic, structure, and types from Python code.
+- **Infer Types:** Analyze variables and function behavior to infer static types required by Rust.
+- **Translate Syntax:** Convert Python syntax into equivalent, idiomatic Rust code.
+- **Generate Rust Code:** Output clean, type-safe, and compile-ready Rust functions that mirror the original Python logic.
+
+--- 
+
+## Technologies/APIs used
+
+- Python 3.12.x
+- Transformers
+- trl
+- CodeBLEU (evaluation parameter)
+
+---
+
+## Results
+
+- Final Fine-tuned model gave the CodeBLEU score of ***0.87229*** and accurately transated ***66 out of 100*** functions. 
+
+---
+
+## Project Collaborators:
+
+- Abraham Rebairo J: Supervisor and Guide
+- Niket Girdhar (me)
