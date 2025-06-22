@@ -17,17 +17,16 @@ export default function Header() {
     'certificates',
     'events',
     'patents',
+    'recommendations'
   ]
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-background/75 py-4 backdrop-blur-sm">
       <nav className="container mx-auto max-w-4xl px-4 flex items-center justify-between">
-        {/* Left: Logo */}
         <Link href="/" className="font-serif text-2xl font-bold">
           NT
         </Link>
 
-        {/* Middle: Desktop nav */}
         <ul className="hidden sm:flex items-center gap-6 text-sm font-light text-muted-foreground">
           {menuItems.map((item) => (
             <li
@@ -41,12 +40,9 @@ export default function Header() {
           ))}
         </ul>
 
-        {/* Right: Hamburger and ThemeToggle */}
         <div className="flex items-center gap-4">
-          {/* Always visible Theme Toggle */}
           <ThemeToggle />
 
-          {/* Hamburger (mobile only) */}
           <button onClick={toggleMenu} className="sm:hidden text-muted-foreground">
             {isMenuOpen ? (
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,7 +57,6 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="sm:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md shadow-lg py-6 px-4 z-40">
           <ul className="flex flex-col items-center gap-5 text-sm font-light text-muted-foreground">

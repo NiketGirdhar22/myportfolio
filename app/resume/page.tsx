@@ -3,16 +3,12 @@ import Image from 'next/image';
 import authorImage from '@/public/images/authors/niket.png';
 import { Button } from '@/components/ui/button';
 import RedirectButton from '@/components/RedirectButton';
-import Testimonials from '@/components/testimonials';
-import { getAllTestimonials } from '@/lib/testimonials';
 
 export default function Resume() {
-  const testimonials = getAllTestimonials();
 
   return (
     <section className="pb-24 pt-32">
       <div className="container max-w-3xl">
-        {/* About Me */}
         <section className="flex flex-col-reverse items-start gap-x-10 gap-y-4 pb-24 md:flex-row md:items-center">
           <div className="mt-2 flex-1 md:mt-0">
             <h1 className="title no-underline">About Me</h1>
@@ -38,7 +34,6 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Skills */}
         <section className="mt-12">
           <h1 className="title no-underline">Skills</h1>
           <div className="mt-6 flex flex-wrap gap-2">
@@ -46,6 +41,10 @@ export default function Resume() {
               "Python",
               "Generative AI",
               "LLMs",
+              "Dataset Generation",
+              "Supervised Learning",
+              "Fine-tuning",
+              "Reinforcement Learning",
               "Prompt Engineering",
               "RestAPI",
               "API Testing - Postman",
@@ -67,15 +66,6 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Recommendations */}
-        <section className="mt-12">
-          <h2 className="title no-underline">Recommendations</h2>
-          <div className="mt-6">
-            <Testimonials testimonials={testimonials} />
-          </div>
-        </section>
-
-        {/* Footer / Links */}
         <footer className="mt-16">
           <h1 className="text-2xl font-semibold">Links</h1>
           <div className="mt-4">
