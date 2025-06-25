@@ -16,7 +16,7 @@ export default function Header() {
     'projects',
     'certificates',
     'events',
-    'patents',
+    'publications',
     'recommendations'
   ]
 

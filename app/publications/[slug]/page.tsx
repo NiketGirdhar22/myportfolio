@@ -4,40 +4,41 @@ import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
-import { getPatentBySlug, getPatents } from '@/lib/patents'
+import { getPublicationBySlug, getPublications } from '@/lib/publications'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
-  const patents = await getPatents()
-  const slugs = patents.map((patent) => ({ slug: patent.slug }))
+  const publications = await getPublications()
+  const slugs = publications.map((publication) => ({ slug: publication.slug }))
 
   return slugs
 }
 
-export default async function Patent({
+export default async function Publication({
   params
 }: {
   params: { slug: string }
 }) {
   const { slug } = params
-  const patent = await getPatentBySlug(slug)
+  const publication = await getPublicationBySlug(slug)
 
-  if (!patent) {
+  if (!publication) {
     notFound()
   }
 
-  const { metadata, content } = patent
-  const { title, image, patentType, author, publishedAt, grantDate } = metadata
+
+  const { metadata, content } = publication
+  const { title, image, publicationType, author, publishedAt, grantDate } = metadata
 
   return (
     <section className='pb-24 pt-32'>
       <div className='container max-w-3xl'>
         <Link
-          href='/patents'
+          href='/publications'
           className='mb-8 inline-flex items-center gap-2 text-sm font-light text-muted-foreground transition-colors hover:text-foreground'
         >
           <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to Patents</span>
+          <span>Back to Publications</span>
         </Link>
 
         {image && (
@@ -54,11 +55,16 @@ export default async function Patent({
         <header>
           <h1 className='title'>{title}</h1>
           <p className='mt-3 text-md text-muted-foreground'>
-            {author} / {formatDate(publishedAt ?? '')}
+            {author}
           </p>
-          {patentType && (
+          {publicationType && (
             <p className='mt-2 text-sm text-muted-foreground'>
-              <strong>Patent Type:</strong> {patentType}
+              <strong>Publication Type:</strong> {publicationType}
+            </p>
+          )}
+          {(
+            <p className='mt-2 text-sm text-muted-foreground'>
+              <strong>Publication Date:</strong> {formatDate(publishedAt ?? '')}
             </p>
           )}
           {(

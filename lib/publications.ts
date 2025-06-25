@@ -2,24 +2,24 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const rootDirectory = path.join(process.cwd(), 'content', 'patents')
+const rootDirectory = path.join(process.cwd(), 'content', 'publications')
 
-export type Patent = {
-  metadata: PatentMetadata
+export type Publication = {
+  metadata: PublicationMetadata
   content: string
 }
 
-export type PatentMetadata = {
+export type PublicationMetadata = {
   title?: string
   image?: string
-  patentType?: string
+  publicationType?: string
   author?: string
   publishedAt?: string
   grantDate?: string | null
   slug: string
 }
 
-export async function getPatentBySlug(slug: string): Promise<Patent | null> {
+export async function getPublicationBySlug(slug: string): Promise<Publication | null> {
   try {
     const filePath = path.join(rootDirectory, `${slug}.mdx`)
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -30,11 +30,11 @@ export async function getPatentBySlug(slug: string): Promise<Patent | null> {
   }
 }
 
-export async function getPatents(limit?: number): Promise<PatentMetadata[]> {
+export async function getPublications(limit?: number): Promise<PublicationMetadata[]> {
   const files = fs.readdirSync(rootDirectory)
 
-  const patents = files
-    .map(file => getPatentMetadata(file))
+  const publications = files
+    .map(file => getPublicationMetadata(file))
     .sort((a, b) => {
       if (new Date(a.publishedAt ?? '') < new Date(b.publishedAt ?? '')) {
         return 1
@@ -44,13 +44,13 @@ export async function getPatents(limit?: number): Promise<PatentMetadata[]> {
     })
 
   if (limit) {
-    return patents.slice(0, limit)
+    return publications.slice(0, limit)
   }
 
-  return patents
+  return publications
 }
 
-export function getPatentMetadata(filepath: string): PatentMetadata {
+export function getPublicationMetadata(filepath: string): PublicationMetadata {
   const slug = filepath.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, filepath)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })

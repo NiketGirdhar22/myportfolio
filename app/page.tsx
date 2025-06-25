@@ -3,7 +3,7 @@ import RecentPosts from '@/components/recent-posts'
 import RecentProjects from '@/components/recent-projects'
 import RecentCertificates from '@/components/recent-certificates'
 import RecentExperiences from '@/components/recent-experiences'
-import RecentPatents from '@/components/recent-patents'
+import RecentPublications from '@/components/recent-publications'
 import RecentEvents from '@/components/recent-events'
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
         <RecentCertificates />
         <RecentExperiences />
         <RecentEvents />
-        <RecentPatents />
+        <RecentPublications />
 
 
       </div>
