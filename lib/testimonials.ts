@@ -8,6 +8,7 @@ export type Testimonial = {
   title: string;
   date: string;
   content: string;
+  contact: string;
 };
 
 const testimonialsDirectory = path.join(process.cwd(), 'content/testimonials');
@@ -26,6 +27,7 @@ export function getAllTestimonials(): Testimonial[] {
       title: data.title,
       date: data.date,
       content,
+      contact: data.contact || '',
     };
   });
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import RedirectButton from '@/components/RedirectButton';
 
 export interface Testimonial {
   slug: string;
@@ -6,12 +7,13 @@ export interface Testimonial {
   title: string;
   date: string;
   content: string;
+  contact: string;
 }
 
 export default function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
   return (
     <ul className="flex flex-col gap-8 w-full">
-      {testimonials.map(({ slug, name, title, date, content }) => (
+      {testimonials.map(({ slug, name, title, date, content, contact }) => (
         <li
           key={slug}
           className="w-full rounded-xl border border-border bg-background p-6 shadow-sm transition-transform duration-300 transform hover:scale-105 hover:shadow-md"
@@ -21,9 +23,10 @@ export default function Testimonials({ testimonials }: { testimonials: Testimoni
           <p className="mt-2 whitespace-pre-line text-gray-700 dark:text-gray-300">
             {content}
           </p>
-          <p className="mt-4 text-xs text-muted-foreground">
-            {new Date(date).toLocaleDateString()}
-          </p>
+          <div className="mt-4 flex justify-between items-center text-xs text-muted-foreground">
+            <span>{new Date(date).toLocaleDateString()}</span>
+            <RedirectButton redirectUrl={contact} label="Contact Recommender" />
+          </div>
         </li>
       ))}
     </ul>
