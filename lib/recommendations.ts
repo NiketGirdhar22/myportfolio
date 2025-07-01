@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export type Testimonial = {
+export type Recommendation = {
   slug: string;
   name: string;
   title: string;
@@ -11,13 +11,13 @@ export type Testimonial = {
   contact: string;
 };
 
-const testimonialsDirectory = path.join(process.cwd(), 'content/testimonials');
+const recommendationsDirectory = path.join(process.cwd(), 'content/recommendations');
 
-export function getAllTestimonials(): Testimonial[] {
-  const files = fs.readdirSync(testimonialsDirectory);
+export function getAllRecommendations(): Recommendation[] {
+  const files = fs.readdirSync(recommendationsDirectory);
 
   return files.map((filename) => {
-    const filePath = path.join(testimonialsDirectory, filename);
+    const filePath = path.join(recommendationsDirectory, filename);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
 

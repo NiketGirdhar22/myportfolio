@@ -1,8 +1,8 @@
-import Testimonials from '@/components/testimonials';
-import { getAllTestimonials } from '@/lib/testimonials';
+import Recommendations from '@/components/recommendations';
+import { getAllRecommendations } from '@/lib/recommendations';
 
 export default function Resume() {
-  const testimonials = getAllTestimonials();
+  const recommendations = getAllRecommendations();
 
   return (
     <section className="pb-24 pt-32">
@@ -11,7 +11,7 @@ export default function Resume() {
         <section className="mt-12">
           <h2 className="title no-underline">Recommendations</h2>
           <div className="mt-6">
-            <Testimonials testimonials={testimonials} />
+            <Recommendations recommendations={recommendations} />
           </div>
         </section>
 

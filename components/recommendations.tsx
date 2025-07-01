@@ -1,7 +1,7 @@
 import React from "react";
 import RedirectButton from '@/components/RedirectButton';
 
-export interface Testimonial {
+export interface Recommendation {
   slug: string;
   name: string;
   title: string;
@@ -10,10 +10,10 @@ export interface Testimonial {
   contact: string;
 }
 
-export default function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
+export default function Recommendations({ recommendations }: { recommendations: Recommendation[] }) {
   return (
     <ul className="flex flex-col gap-8 w-full">
-      {testimonials.map(({ slug, name, title, date, content, contact }) => (
+      {recommendations.map(({ slug, name, title, date, content, contact }) => (
         <li
           key={slug}
           className="w-full rounded-xl border border-border bg-background p-6 shadow-sm transition-transform duration-300 transform hover:scale-105 hover:shadow-md"
