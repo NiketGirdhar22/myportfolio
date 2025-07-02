@@ -24,7 +24,13 @@ export default function Recommendations({ recommendations }: { recommendations: 
             {content}
           </p>
           <div className="mt-4 flex justify-between items-center text-xs text-muted-foreground">
-            <span>{new Date(date).toLocaleDateString()}</span>
+            <span>
+              {new Date(date).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+              })}
+            </span>
             <RedirectButton redirectUrl={contact} label="Contact Recommender" />
           </div>
         </li>

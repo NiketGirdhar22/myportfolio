@@ -16,7 +16,7 @@ const recommendationsDirectory = path.join(process.cwd(), 'content/recommendatio
 export function getAllRecommendations(): Recommendation[] {
   const files = fs.readdirSync(recommendationsDirectory);
 
-  return files.map((filename) => {
+  const recommendations = files.map((filename) => {
     const filePath = path.join(recommendationsDirectory, filename);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
@@ -30,4 +30,8 @@ export function getAllRecommendations(): Recommendation[] {
       contact: data.contact || '',
     };
   });
+
+  return recommendations.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 }
