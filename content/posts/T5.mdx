@@ -1,0 +1,67 @@
+---
+title: T5 – Text-To-Text Transfer Transformer  
+summary: T5 is a unified encoder-decoder Transformer architecture that frames every NLP task as a text-to-text problem, enabling exceptional performance across diverse domains.  
+image: /images/posts/t5.jpg
+author: 'Niket Girdhar'  
+publishedAt: '2025-07-09'  
+---
+
+T5 (Text-To-Text Transfer Transformer) is an innovative model by Google that reframes all Natural Language Processing (NLP) tasks into a unified text-to-text format. Whether it’s translation, summarization, or classification, T5 treats both inputs and outputs as plain text, enabling a highly flexible architecture.  
+
+Unlike earlier models that use only **encoders** (like BERT) or only **decoders** (like GPT), T5 leverages the **full Transformer architecture** with both an **encoder stack** and a **decoder stack**. This makes it capable of handling a wide range of tasks seamlessly.  
+
+---
+
+### Why T5 is Different  
+
+- **Encoder-only Models (e.g., BERT):**  
+  Great for understanding tasks like text classification or question answering but not suitable for text generation.  
+
+- **Decoder-only Models (e.g., GPT):**  
+  Ideal for text generation and conversational AI but less efficient for understanding tasks.  
+
+- **T5’s Encoder-Decoder Architecture:**  
+  Combines the strengths of both approaches for a unified framework. It can handle *any* NLP task by casting it as a text-to-text problem.  
+
+---
+
+### Pre-trained Tasks in T5  
+
+T5 is pre-trained on a diverse set of text-to-text tasks:  
+
+- **Translation:** Convert text between languages (e.g., English to German).  
+- **Summarization:** Condense long articles into concise summaries.  
+- **STSB (Semantic Textual Similarity Benchmark):** Measure how similar two sentences are in meaning.  
+- **CoLA (Corpus of Linguistic Acceptability):** Judge whether a sentence is grammatically acceptable.  
+
+By unifying these tasks, T5 simplifies transfer learning and fine-tuning.  
+
+---
+
+### Key Innovations in T5  
+
+- **Sentinel Tokens:** Unlike BERT, which masks single tokens, T5 can mask and predict multiple spans of text at once.  
+- **Deshuffling Objective:** Trains the model to reorder shuffled sequences, improving its understanding of text structure.  
+- **Cross-Attention in Decoder:** Lets the decoder attend to encoder outputs, providing context-aware generation capabilities.  
+
+---
+
+### Training Objectives  
+
+T5 uses multiple pre-training strategies:  
+
+- **Masked Span Prediction:** Predict masked spans in input text.  
+- **Autoregressive Generation:** Generate text one token at a time, like GPT.  
+- **Deshuffling:** Restore original word order in randomly shuffled input.  
+
+---
+
+### Use Cases for T5  
+
+- Machine Translation  
+- Question Answering  
+- Abstract Summarization  
+- Text Simplification  
+- Grammar Correction  
+
+T5’s encoder-decoder architecture combines the **understanding of BERT** and the **generation power of GPT**, making it one of the most versatile NLP models to date.  
