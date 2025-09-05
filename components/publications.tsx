@@ -38,9 +38,12 @@ export default function Publications({
                 <p className='line-clamp-1 text-sm text-muted-foreground'>
                   {publication.author}
                 </p>
-                <p className='text-xs font-light text-muted-foreground'>
-                  {formatDate(publication.publishedAt ?? 'Unknown date')}
-                </p>
+                {publication.publishedAt && publication.publishedAt.toLowerCase() !== 'not needed' && (
+  <p className='text-xs font-light text-muted-foreground'>
+    {formatDate(publication.publishedAt)}
+  </p>
+)}
+
               </div>
             </Link>
           </li>

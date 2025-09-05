@@ -62,16 +62,18 @@ export default async function Publication({
               <strong>Publication Type:</strong> {publicationType}
             </p>
           )}
-          {(
-            <p className='mt-2 text-sm text-muted-foreground'>
-              <strong>Publication Date:</strong> {formatDate(publishedAt ?? '')}
-            </p>
-          )}
-          {(
-            <p className='mt-2 text-sm text-muted-foreground'>
-              <strong>Grant Date:</strong> {grantDate ? formatDate(grantDate) : 'Pending'}
-            </p>
-          )}
+          {publishedAt && publishedAt.toLowerCase() !== 'not needed' && (
+  <p className='mt-2 text-sm text-muted-foreground'>
+    <strong>Publication Date:</strong> {formatDate(publishedAt)}
+  </p>
+)}
+
+{grantDate && grantDate.toLowerCase() !== 'not needed' && (
+  <p className='mt-2 text-sm text-muted-foreground'>
+    <strong>Grant Date:</strong> {formatDate(grantDate)}
+  </p>
+)}
+
         </header>
 
         <main className='prose mt-16 dark:prose-invert'>
