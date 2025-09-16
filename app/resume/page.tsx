@@ -70,8 +70,8 @@ export default function Resume() {
           <h1 className="text-2xl font-semibold">Links</h1>
           <div className="mt-4">
             <RedirectButton
-              redirectUrl="https://drive.google.com/file/d/1ASB7nbAKHjHzvmSYdZbjLEw0vCSBkW7f/view"
-              label="View my CV"
+              redirectUrl="https://drive.google.com/file/d/1wUPKCJQYg7cYeecF-osO_QM_TJYlz0gl/view?usp=share_link"
+              label="View my Resume"
             />
           </div>
         </footer>
