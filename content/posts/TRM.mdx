@@ -1,0 +1,203 @@
+---
+  title: Tiny Recursive Models - Why Recursion Beats Scale in AI Reasoning
+  summary: Tiny Recursive Models prove that thinking longer through recursion can outperform thinking bigger through scale in AI reasoning.
+  image: /images/posts/TRM.png
+  author: 'Niket Girdhar'
+  publishedAt: '2026-01-26'
+---
+
+For the last decade, progress in artificial intelligence has been driven by a single dominant idea: scaling. Bigger datasets, larger models, deeper networks, and more compute have consistently produced better results across language, vision, and multimodal tasks.
+
+However, when it comes to ***hard reasoning problems:*** Sudoku, mazes, symbolic transformations, and ARC-AGI-style puzzles, this scaling strategy begins to break down.
+
+A recent paper from Samsung SAIL Montréal introduces the **Tiny Recursive Model (TRM)**, a system with only ***~7 million parameters*** that outperforms much larger models on several logic benchmarks. Instead of relying on scale, TRM relies on recursion and iterative refinement.
+
+This post explains how TRM works, why it succeeds where large language models fail, and what it teaches us about the future of reasoning-centric AI.
+
+---
+
+### The Fundamental Weakness of Large Language Models
+
+Large Language Models (LLMs) generate outputs auto-regressively: one token at a time, left to right. This works extremely well for natural language, but it is poorly suited for problems that require global consistency.
+
+Consider a Sudoku puzzle.
+
+A single incorrect digit violates constraints across rows, columns, and sub-grids. In an auto-regressive setup:
+- Early mistakes cannot be revised
+- Errors propagate irreversibly
+- The model has no mechanism to “rethink” previous steps
+
+This is why many state-of-the-art LLMs achieve near-zero accuracy on **Sudoku-Extreme** or **Maze-Hard**, despite having billions of parameters.
+
+The problem is not a lack of intelligence, it is a lack of iterative reasoning.
+
+---
+
+### From One-Shot Prediction to Recursive Reasoning
+
+The core idea behind TRM is simple but powerful:
+> Reasoning should be a process, not a single forward pass.
+
+Instead of predicting an answer once, TRM **loops over the same network multiple times**, refining its internal state and output at each iteration.
+
+This turns reasoning into a dynamical system rather than a static mapping.
+
+---
+
+### The TRM State Representation
+
+At every iteration, the model operates on three components:
+- x: the input problem (e.g., a Sudoku grid or ARC task)
+- yₜ: the current predicted solution
+- zₜ: a latent reasoning state
+
+The model learns a function:
+```sh
+(zₜ₊₁, yₜ₊₁) = f(x, zₜ, yₜ)
+```
+
+Here:
+- z acts as a continuous, vector-based “chain of thought”
+- y stores the current best solution
+- The same function f is reused at every step
+
+This reuse is crucial. Instead of adding depth through more layers, TRM adds depth through time.
+
+---
+
+### Simulated Depth Through Recursion
+
+Although TRM uses only a 2-layer network, recursion gives it an **effective depth of ~40+ layers**.
+
+This happens because:
+- Each iteration composes the same transformation again
+- Gradients flow through the entire unrolled recursion during training
+- The model learns how to update its own reasoning state
+
+In practice, this behaves like a deep network, but without the parameter overhead.
+
+This concept is sometimes called **time-unrolled depth**, and it is central to TRM’s success.
+
+---
+
+### Deep Supervision: Training the Model to Improve Itself
+
+One of the most important techniques used in TRM is **deep supervision**.
+
+Instead of supervising only the final output:
+- The model is trained to produce better answers at every iteration
+- Loss is applied across multiple refinement steps
+
+This teaches the network a skill that standard models never learn:
+> How to improve a partially wrong solution.
+
+As a result:
+- Early iterations produce rough guesses
+- Later iterations progressively correct errors
+- The model learns how to reason, not just what the answer looks like
+
+---
+
+### Why Smaller Models Generalize Better Here
+TRM’s parameter count (~5–7M) is not a limitation, it is an advantage.
+
+Logic benchmarks typically have:
+- Very small datasets (often ~1,000 examples)
+- Strong structural rules
+- Minimal tolerance for memorization
+
+Large models tend to overfit in this regime. TRM avoids this by:
+- Limiting representational capacity
+- Forcing reuse of the same reasoning function
+- Treating recursion depth as compute, not parameters
+In ablation studies, increasing the number of layers ***reduced performance***, confirming that minimalism improves generalization for these tasks.
+
+---
+
+### Architectural Simplification from HRM to TRM
+
+TRM is derived from the earlier **Hierarchical Reasoning Model (HRM)**, but it removes much of HRM’s complexity:
+- Two networks → one network
+- Hierarchical latent states → functional (z, y) states
+- Fixed-point assumptions → full backpropagation through recursion
+- Complex halting losses → a single learned halting mechanism
+
+This simplification made the model:
+- Easier to train
+- More stable
+- More interpretable
+- More effective
+
+In other words, **less theory, better results**.
+
+---
+
+### Attention Is Optional (and Sometimes Harmful)
+
+TRM also challenges another assumption: that self-attention is always necessary.
+
+For fixed-structure tasks like Sudoku:
+- Replacing attention with a simple MLP improved generalization
+- Removing attention reduced overcapacity
+
+However, for tasks like ARC-AGI:
+- Spatial relationships matter
+- Self-attention remains essential
+
+This shows that **architecture should match task structure**, not default to general-purpose components.
+
+---
+
+### Stability Through Exponential Moving Average (EMA)
+
+Training recursive systems can be unstable. TRM addresses this using:
+- Exponential Moving Average (EMA) of weights
+
+EMA smooths parameter updates and:
+- Prevents divergence
+- Improves convergence
+- Increases final accuracy significantly
+
+This is especially important when training with small datasets and deep recursion.
+
+---
+
+### Why TRM Outperforms Massive Models
+
+Putting everything together, TRM succeeds because it replaces:
+- ***Scale → Iteration***
+- ***One-shot prediction → Self-correction***
+- ***Text-based reasoning → Latent vector reasoning***
+- ***Model depth → Time-unrolled depth***
+
+Instead of guessing harder, the model **thinks longer**.
+
+---
+
+### Implications for the Future of AI Reasoning
+
+TRM demonstrates that:
+- Reasoning does not require billions of parameters
+- Iterative refinement is a powerful inductive bias
+- Small models can outperform large ones on the right problems
+
+This has major implications for:
+- Edge and low-compute AI
+- Formal reasoning systems
+- Hybrid neuro-symbolic models
+- The future of ARC-style benchmarks
+
+The scaling era is not over, but TRM shows that **scaling is not the only path forward**.
+
+---
+
+### Final Takeaway
+
+Tiny Recursive Models do not aim to replace large language models.
+
+They expose something deeper:
+> Intelligence is not just about knowing more, It is about revising what you know.
+
+And recursion may be the most efficient way to do exactly that.
+
+Paper link: <RedirectButton redirectUrl="https://arxiv.org/pdf/2510.04871" label="Paper Read" newWindow="Yes"/>
