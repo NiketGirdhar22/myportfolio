@@ -1,0 +1,187 @@
+---
+  title: RedSage - Building a Cybersecurity Generalist LLM with Agentic Data Augmentation
+  summary: Tiny Recursive Models prove that thinking longer through recursion can outperform thinking bigger through scale in AI reasoning.
+  image: /images/posts/RedSage.png
+  author: 'Niket Girdhar'
+  publishedAt: '2026-02-01'
+---
+
+Large Language Models have shown impressive general reasoning abilities, but **cybersecurity exposes their weakest points**:
+- incorrect command syntax
+- hallucinated tools
+- shallow understanding of real-world workflows
+
+RedSage addresses this gap by asking a different question:
+> How do we teach an LLM to think like a security practitioner, without turning it into a narrow specialist?
+
+The answer lies in a **data-centric, agentic training** pipeline that bridges general knowledge and domain expertise.
+
+---
+
+## The Core Problem: General vs Domain-Specific Models
+
+Traditional approaches fall into two categories:
+1. General-Purpose LLMs
+- Strong reasoning and language skills
+- Weak at:
+  - tool usage
+  - vulnerability workflows
+  - framework grounding (MITRE, OWASP, NIST)
+
+2. Security-Specialized Models
+- Memorize terminology and benchmarks
+- Often suffer from:
+  - catastrophic forgetting
+  - degraded math and reasoning
+  - brittle performance outside cybersecurity
+
+RedSage aims to **combine both**.
+
+---
+
+## RedSage Architecture Overview
+
+RedSage is an 8B-parameter, open-source, locally deployable LLM, designed for privacy-sensitive security environments.
+
+Its training pipeline consists of three tightly coupled stages:
+- Continual Pre-Training
+- Agentic Fine-Tuning
+- Rigorous Multi-Axis Evaluation
+
+---
+
+### Stage 1: Data-Centric Continual Pre-Training
+
+**CyberFineWeb: Domain Filtering at Scale**
+
+RedSage introduces CyberFineWeb, a 11.7B-token cybersecurity corpus built by:
+- Filtering FineWeb using a BERT-based cybersecurity classifier
+- Retaining both theoretical and operational content
+**Preventing Catastrophic Forgetting**
+
+Instead of training purely on security data, RedSage uses controlled replay:
+- ~30% general-knowledge replay via FineWeb-Edu
+- Maintains broad reasoning, math, and instruction-following skills
+**High-Trust Seed Data**
+
+The model also ingests:
+- MITRE ATT&CK
+- OWASP documentation
+- NIST standards
+- Offensive security write-ups
+
+This ***RedSage-Seed*** dataset turns out to be surprisingly important, not just for security, but also for math reasoning.
+
+---
+
+### Stage 2: Agentic Data Augmentation (The Key Innovation)
+
+The most novel part of RedSage is its **agentic augmentation pipeline**.
+
+**Why Static Docs Aren’t Enough**
+
+Most cybersecurity knowledge exists as:
+- manuals
+- reports
+- PDFs
+- blog posts
+
+But real security work is conversational and procedural:
+- multi-step reasoning
+- tool chaining
+- role-based collaboration
+
+***Planner + Augmenter Agents***
+RedSage converts static text into workflows using two agents:
+
+1. ***Planner Agent***
+- Analyzes seed documents
+- Extracts implicit skills
+- Proposes multiple augmentation strategies:
+  - exploitation walkthroughs
+  - threat mapping
+  - SOC troubleshooting
+  - tool command generation
+
+2. Augmenter Agent
+- Executes the plan
+- Generates **multi-turn, role-based dialogues**
+- Grounded strictly in the source material
+- Preserves:
+  - exact commands
+  - flags
+  - vulnerability identifiers
+
+**Scaling effect**
+
+- ~28K documents → 266K conversations
+- 9.2× sample expansion
+- 2.3× token growth
+- Average ~10 turns per dialogue
+
+This solves the **human labeling bottleneck** in cybersecurity.
+
+---
+
+### Tool-Specific Performance: Why RedSage Excels
+
+Most LLMs fail when precision matters.
+
+RedSage doesn’t.
+
+Because it trains on **workflow-level conversations**, it learns:
+- exact CLI syntax
+- correct sequencing of actions
+- framework-aligned reasoning
+
+Qualitative evaluations show:
+- Correct command construction where others hallucinate flags
+- Accurate threat actor attribution
+- Better grounding in real tools and procedures
+
+---
+
+### Stage 3: Evaluation Without Blind Spots
+
+RedSage is evaluated across:
+- **RedSage-Bench** (knowledge, skills, tools)
+- External security benchmarks
+- Open LLM Leaderboard (general reasoning)
+
+Results Snapshot
+- +5.5 points over 8B baselines on cybersecurity benchmarks
+- Near-parity with much larger models on security tasks
+- **Improved general reasoning**, not degraded
+
+This confirms the central claim:
+> Specialization does not require sacrificing general intelligence.
+
+---
+
+### Why This Matters
+
+RedSage demonstrates a broader lesson for applied AI:
+- ***Data strategy > model size***
+- ***Agentic pipelines > static supervision***
+- ***Workflows > isolated Q&A***
+
+For security teams, this means:
+- privacy-preserving local deployment
+- models that understand real tools
+- assistants that behave like junior analysts—not encyclopedias
+
+---
+
+### Final Takeaway
+
+RedSage is not just a cybersecurity LLM.
+It’s a template for domain adaptation done right.
+
+If you’re building:
+- domain-specific assistants
+- agentic training pipelines
+- AI systems for high-precision tasks
+
+RedSage is worth studying closely.
+
+Paper link: <RedirectButton redirectUrl="https://arxiv.org/pdf/2601.22159" label="Paper Read" newWindow="Yes"/>
