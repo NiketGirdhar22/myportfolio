@@ -1,0 +1,22 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" rx="24" fill="#0F172A"/>
+  <rect x="36" y="36" width="1128" height="603" rx="18" fill="#111827"/>
+  <rect x="76" y="92" width="1048" height="56" rx="10" fill="#1F2937"/>
+  <circle cx="112" cy="120" r="8" fill="#EF4444"/>
+  <circle cx="140" cy="120" r="8" fill="#F59E0B"/>
+  <circle cx="168" cy="120" r="8" fill="#22C55E"/>
+  <text x="202" y="127" fill="#9CA3AF" font-family="Menlo, Consolas, Monaco, monospace" font-size="20">ollama-cli-chat</text>
+
+  <text x="96" y="220" fill="#34D399" font-family="Menlo, Consolas, Monaco, monospace" font-size="30">$</text>
+  <text x="126" y="220" fill="#E5E7EB" font-family="Menlo, Consolas, Monaco, monospace" font-size="30">ollama-chat --model llama3.1</text>
+
+  <rect x="96" y="260" width="1008" height="112" rx="14" fill="#0B1220"/>
+  <text x="126" y="312" fill="#93C5FD" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">You:</text>
+  <text x="206" y="312" fill="#E5E7EB" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Summarize retrieval-augmented generation.</text>
+
+  <rect x="96" y="396" width="1008" height="172" rx="14" fill="#0B1220"/>
+  <text x="126" y="448" fill="#A7F3D0" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Assistant:</text>
+  <text x="272" y="448" fill="#E5E7EB" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">RAG combines vector retrieval with LLM generation</text>
+  <text x="126" y="486" fill="#E5E7EB" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">to ground responses in your local knowledge base.</text>
+  <text x="126" y="524" fill="#E5E7EB" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Use this CLI for fast, private, local chat workflows.</text>
+</svg>
