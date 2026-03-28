@@ -1,0 +1,25 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" rx="24" fill="#07131D"/>
+  <rect x="36" y="36" width="1128" height="603" rx="20" fill="#0D1B2A"/>
+
+  <rect x="86" y="92" width="1028" height="92" rx="16" fill="#112A3A"/>
+  <text x="118" y="148" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="44">MicroML</text>
+  <text x="392" y="148" fill="#7DD3FC" font-family="Menlo, Consolas, Monaco, monospace" font-size="28">pure C99 machine learning library</text>
+
+  <rect x="86" y="216" width="496" height="172" rx="14" fill="#102234"/>
+  <text x="118" y="262" fill="#A5F3FC" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Implemented</text>
+  <text x="118" y="304" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">- Linear Regression</text>
+  <text x="118" y="338" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">- Logistic Regression</text>
+  <text x="118" y="372" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">- KNN and K-Means</text>
+
+  <rect x="614" y="216" width="500" height="172" rx="14" fill="#102234"/>
+  <text x="646" y="262" fill="#A5F3FC" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Utilities</text>
+  <text x="646" y="304" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">- Matrix and vector operations</text>
+  <text x="646" y="338" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">- Dataset loading and normalization</text>
+  <text x="646" y="372" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">- Model save/load support</text>
+
+  <rect x="86" y="420" width="1028" height="168" rx="14" fill="#102234"/>
+  <text x="118" y="468" fill="#A5F3FC" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Design Goal</text>
+  <text x="118" y="510" fill="#E2E8F0" font-family="Menlo, Consolas, Monaco, monospace" font-size="24">Readable, educational ML implementation with zero external dependencies.</text>
+  <text x="118" y="550" fill="#93C5FD" font-family="Menlo, Consolas, Monaco, monospace" font-size="22">Language: C (C99)   Build: CMake</text>
+</svg>
