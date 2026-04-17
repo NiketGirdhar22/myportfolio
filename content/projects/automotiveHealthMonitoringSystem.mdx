@@ -1,0 +1,74 @@
+---
+title: Automotive Health Monitoring System
+summary: Developed a multimodal predictive maintenance framework using telemetry and acoustic data to estimate Remaining Useful Life (RUL) and detect machine anomalies in automotive systems
+image: /images/projects/automotive-health-monitoring.png
+author: 'Niket Girdhar'
+publishedAt: '2026-04-08'
+Github: https://github.com/gantayat03/automotive-health-monitoring
+tech: ["Python", "TensorFlow", "Librosa", "Pandas", "Deep Learning", "Signal Processing"]
+---
+
+***This is our Capstone Project***
+
+---
+
+## Project Overview:
+This project presents an interpretable AI-driven predictive diagnostics system for automotive and industrial machinery using **multimodal data sources**: telemetry signals and acoustic signals.  
+
+Telemetry data (temperature, pressure, sensor trends) was used to estimate **Remaining Useful Life (RUL)**, while acoustic signals were used to detect early mechanical faults through anomaly detection. A final fusion model combines both outputs for smarter maintenance decisions. :contentReference[oaicite:0]{index=0}
+
+---
+
+## Key Highlights:
+- Built **Attention-LSTM models** for RUL prediction using NASA CMAPSS datasets (FD001–FD004).
+- Implemented **Mixture of Experts (MoE)** specialist routing for complex fault conditions.
+- Developed a **4-stage acoustic anomaly detection pipeline** using Autoencoders on MIMII fan recordings.
+- Used **Mel-Spectrograms, Sliding Windows, and Asset-specific Z-normalization** for robust acoustic preprocessing.
+- Designed a **Linear Meta-Learner Fusion Model** combining telemetry and acoustic outputs.
+- Applied **SHAP Explainability** to validate model reasoning and maintenance logic.
+- Achieved strong benchmark performance:
+  - FD001 RMSE: **14.70**
+  - Acoustic ROC-AUC improved from **0.59 → 0.83**
+  - Fusion RMSE improved from **41.51 → 39.13** :contentReference[oaicite:1]{index=1}
+
+---
+
+## Technical Architecture:
+### 1. Telemetry Layer
+Used Attention-LSTM networks to estimate RUL from engine sensor sequences.
+
+### 2. Acoustic Layer
+Used Autoencoders to detect abnormal machine sounds using reconstruction error.
+
+### 3. Fusion Layer
+Combined RUL predictions + anomaly score for final maintenance decision.
+
+### 4. Explainability Layer
+Used SHAP values to understand feature impact and ensure trustworthy AI outputs.
+
+---
+
+## Impact:
+- Reduces unexpected machine failures.
+- Enables predictive maintenance scheduling.
+- Improves operational safety.
+- Lowers downtime and maintenance costs.
+- Supports Industry 4.0 smart manufacturing systems. :contentReference[oaicite:2]{index=2}
+
+---
+
+This project significantly strengthened my expertise in **Machine Learning, Deep Learning, Time-Series Forecasting, Audio Signal Processing, Explainable AI, and Industrial AI Systems**.
+
+---
+
+
+## Project Collaborators:
+
+- **Guide** Prof. Ralph Samuel Thangaraj 
+- Shreya Gantayat
+- Niket Girdhar (me)
+- Suryakiran R
+
+---
+
+<RedirectButton redirectUrl="https://www.linkedin.com/posts/niket-girdhar-068858250_mld-33project-report-ugcPost-7448079520278016000-I2kO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD4P61ABspBHemj1rGKzlI0faInQ4b_jaVI" label="LinkedIn Post" newWindow="Yes"/>
