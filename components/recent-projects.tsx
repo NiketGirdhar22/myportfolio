@@ -1,24 +1,21 @@
 import Link from 'next/link'
 import { getProjects } from '@/lib/projects'
 import Projects from '@/components/projects'
+import SectionShell from '@/components/section-shell'
 
 export default async function RecentProjects() {
   const projects = await getProjects(4)
 
   const recentProjects = projects.slice(0, 2)
   return (
-    <section className='pb-24'>
-      <div>
-        <h2 className='title mb-12'>Recent projects</h2>
-        <Projects projects={recentProjects} />
-
-        <Link
-          href='/projects'
-          className='mt-8 inline-flex items-center gap-2 text-muted-foreground underline decoration-1 underline-offset-2 transition-colors hover:text-foreground'
-        >
-          <span>All projects</span>
-        </Link>
-      </div>
-    </section>
+    <SectionShell
+      eyebrow='Builds'
+      title='Recent projects'
+      description='A more visual snapshot of the systems, tools, and interfaces I have been shipping.'
+      href='/projects'
+      linkLabel='All projects'
+    >
+      <Projects projects={recentProjects} />
+    </SectionShell>
   )
 }

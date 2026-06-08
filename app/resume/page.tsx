@@ -3,16 +3,20 @@ import Image from 'next/image';
 import authorImage from '@/public/images/authors/niket.png';
 import { Button } from '@/components/ui/button';
 import RedirectButton from '@/components/RedirectButton';
+import PageShell from '@/components/page-shell'
 
 export default function Resume() {
 
   return (
-    <section className="pb-24 pt-32">
-      <div className="container max-w-3xl">
-        <section className="flex flex-col-reverse items-start gap-x-10 gap-y-4 pb-24 md:flex-row md:items-center">
-          <div className="mt-2 flex-1 md:mt-0">
-            <h1 className="title no-underline">About Me</h1>
-            <p className="mt-3 font-light text-muted-foreground text-justify">
+    <PageShell
+      eyebrow='Profile'
+      title='Resume'
+      description='A quick, easier-to-use overview of my background, skills, and resume link.'
+    >
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
+          <div className="content-panel">
+            <h2 className="title no-underline">About me</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
               A highly motivated and skilled Computer and Electronics Engineering
               student with a solid foundation in both hardware and software systems.
               Demonstrated expertise in web development, and programming, coupled with
@@ -22,20 +26,20 @@ export default function Resume() {
               meticulous attention to detail, and a collaborative approach to cross-disciplinary projects.
             </p>
           </div>
-          <div className="relative">
+          <div className="media-panel max-w-[260px]">
             <Image
-              className="flex-1 rounded-lg grayscale"
+              className="aspect-[4/5] rounded-[1.5rem] object-cover"
               src={authorImage}
               alt="Niket Girdhar"
-              width={175}
-              height={175}
+              width={260}
+              height={325}
               priority
             />
           </div>
         </section>
 
-        <section className="mt-12">
-          <h1 className="title no-underline">Skills</h1>
+        <section className="content-panel mt-8">
+          <h2 className="title no-underline">Skills</h2>
           <div className="mt-6 flex flex-wrap gap-2">
             {[
               "Python",
@@ -58,7 +62,7 @@ export default function Resume() {
               <Button
                 key={skill}
                 variant="outline"
-                className="transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-md shadow-neutral-300 dark:shadow-neutral-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="border-border/60 bg-background/80"
               >
                 {skill}
               </Button>
@@ -66,16 +70,15 @@ export default function Resume() {
           </div>
         </section>
 
-        <footer className="mt-16">
-          <h1 className="text-2xl font-semibold">Links</h1>
-          <div className="mt-4">
+        <footer className="content-panel mt-8">
+          <h2 className="title no-underline">Links</h2>
+          <div className="mt-6">
             <RedirectButton
               redirectUrl="https://drive.google.com/file/d/1wUPKCJQYg7cYeecF-osO_QM_TJYlz0gl/view?usp=share_link"
               label="View my Resume"
             />
           </div>
         </footer>
-      </div>
-    </section>
+    </PageShell>
   );
 }

@@ -24,21 +24,21 @@ export default function ProjectsWithSearch({ projects }: { projects: ProjectMeta
   }
 
   return (
-    <div>
-      <div className='mb-12 flex items-center gap-3'>
+    <div className='space-y-6'>
+      <div className='soft-card flex flex-col gap-3 md:flex-row md:items-center'>
         <Input
           type='text'
           placeholder='Search projects by tech...'
-          className='h-9 w-full sm:w-1/2'
+          className='w-full md:max-w-md'
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
         {isFiltered && (
           <Button
             size='sm'
-            variant='secondary'
+            variant='outline'
             onClick={resetFilter}
-            className='h-8 px-2 lg:px-3'
+            className='self-start md:self-auto'
           >
             Reset
             <Cross2Icon className='ml-2 h-4 w-4' />

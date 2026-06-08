@@ -1,17 +1,12 @@
-import Link from 'next/link'
-import Image from 'next/image'
-
-import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
-import { ArrowLeftIcon } from '@radix-ui/react-icons'
+import DetailShell from '@/components/detail-shell'
 import { getPublicationBySlug, getPublications } from '@/lib/publications'
+import { formatDate } from '@/lib/utils'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const publications = await getPublications()
-  const slugs = publications.map((publication) => ({ slug: publication.slug }))
-
-  return slugs
+  return publications.map(publication => ({ slug: publication.slug }))
 }
 
 export default async function Publication({
@@ -19,67 +14,36 @@ export default async function Publication({
 }: {
   params: { slug: string }
 }) {
-  const { slug } = params
-  const publication = await getPublicationBySlug(slug)
+  const publication = await getPublicationBySlug(params.slug)
 
   if (!publication) {
     notFound()
   }
 
-
   const { metadata, content } = publication
   const { title, image, publicationType, author, publishedAt, grantDate } = metadata
 
   return (
-    <section className='pb-24 pt-32'>
-      <div className='container max-w-3xl'>
-        <Link
-          href='/publications'
-          className='mb-8 inline-flex items-center gap-2 text-sm font-light text-muted-foreground transition-colors hover:text-foreground'
-        >
-          <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to Publications</span>
-        </Link>
-
-        {image && (
-          <div className='relative mb-6 h-96 w-full overflow-hidden rounded-lg'>
-            <Image
-              src={image}
-              alt={title || ''}
-              className='object-contain'
-              fill
-            />
-          </div>
-        )}
-
-        <header>
-          <h1 className='title'>{title}</h1>
-          <p className='mt-3 text-md text-muted-foreground'>
-            {author}
-          </p>
-          {publicationType && (
-            <p className='mt-2 text-sm text-muted-foreground'>
-              <strong>Publication Type:</strong> {publicationType}
-            </p>
-          )}
-          {publishedAt && publishedAt.toLowerCase() !== 'not needed' && (
-  <p className='mt-2 text-sm text-muted-foreground'>
-    <strong>Publication Date:</strong> {formatDate(publishedAt)}
-  </p>
-)}
-
-{grantDate && grantDate.toLowerCase() !== 'not needed' && (
-  <p className='mt-2 text-sm text-muted-foreground'>
-    <strong>Grant Date:</strong> {formatDate(grantDate)}
-  </p>
-)}
-
-        </header>
-
-        <main className='prose mt-16 dark:prose-invert'>
-          <MDXContent source={content} />
-        </main>
-      </div>
-    </section>
+    <DetailShell
+      backHref='/publications'
+      backLabel='Back to publications'
+      eyebrow='Publication'
+      title={title || ''}
+      image={image}
+      imageAlt={title || ''}
+      meta={[
+        author || '',
+        publicationType ? `Type: ${publicationType}` : '',
+        publishedAt && publishedAt.toLowerCase() !== 'not needed'
+          ? `Published: ${formatDate(publishedAt)}`
+          : '',
+        grantDate && grantDate.toLowerCase() !== 'not needed'
+          ? `Grant: ${formatDate(grantDate)}`
+          : ''
+      ]}
+      contentClassName='content-panel prose max-w-none'
+    >
+      <MDXContent source={content} />
+    </DetailShell>
   )
 }

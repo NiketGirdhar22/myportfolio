@@ -33,13 +33,11 @@ export default function RedirectButton({ redirectUrl, label, newWindow = 'Yes' }
   return (
     <Button
       size="sm"
-      variant="ghost"
+      variant="outline"
       onClick={handleClick}
-      className="items-center gap-2 border-b-2 border-transparent hover:border-b-2 hover:border-gray-300 hover:bg-transparent transition-all duration-200"
+      className="items-center gap-2 border-border/60 bg-white/80 px-5 hover:-translate-y-0.5 hover:bg-white"
     >
-      <span className="font-semibold text-primary-500 hover:text-gray-400 transition-colors duration-200">
-        {label}
-      </span>
+      <span className="font-medium">{label}</span>
       <span className="sr-only">Redirect to {redirectUrl}</span>
     </Button>
   )

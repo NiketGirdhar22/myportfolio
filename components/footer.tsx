@@ -5,46 +5,43 @@ const navigation = [
     name: 'Email',
     href: 'mailto:niketgirdhar2004@gmail.com',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-      <svg fill="currentColor" viewBox="0 0 24 24" className="h-4 w-4" {...props}>
-        <rect 
-          x="3" 
-          y="5" 
-          width="18" 
-          height="14" 
-          rx="1" 
-          style={{ fill: "none", strokeWidth: 2 }} 
-          className="stroke-current dark:stroke-white stroke-black"
+      <svg fill='currentColor' viewBox='0 0 24 24' className='h-4 w-4' {...props}>
+        <rect
+          x='3'
+          y='5'
+          width='18'
+          height='14'
+          rx='1'
+          style={{ fill: 'none', strokeWidth: 2 }}
+          className='stroke-current'
         />
-        <path 
-          d="M21,6V8l-9,5L3,8V6A1,1,0,0,1,4,5H20A1,1,0,0,1,21,6Z" 
-          style={{ fill: "none", strokeWidth: 2 }} 
-          className="stroke-current dark:stroke-white stroke-black"
+        <path
+          d='M21,6V8l-9,5L3,8V6A1,1,0,0,1,4,5H20A1,1,0,0,1,21,6Z'
+          style={{ fill: 'none', strokeWidth: 2 }}
+          className='stroke-current'
         />
       </svg>
-    ),
+    )
   },
   {
     name: 'Contact',
     href: 'tel:+919780050565',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-      <svg fill="currentColor" viewBox="0 0 24 24" className="h-4 w-4" {...props}>
+      <svg fill='currentColor' viewBox='0 0 24 24' className='h-4 w-4' {...props}>
         <path
-          fillRule="evenodd"
-          d="M19.907 15.234l-2.826-2.827a1 1 0 0 0-1.414 0l-1.456 1.457a1 1 0 0 0 0 1.415l4.081 4.08a1 1 0 0 0 1.414 0l2.276-2.275a1 1 0 0 0 0-1.414l-3.108-3.107a1 1 0 0 0-1.414 0zM4.094 8.03l3.107 3.107a1 1 0 0 0 1.414 0l1.456-1.457a1 1 0 0 0 0-1.415L5.83 3.68a1 1 0 0 0-1.414 0L2.14 5.957a1 1 0 0 0 0 1.414l4.08 4.08a1 1 0 0 0 1.414 0l1.457-1.456a1 1 0 0 0 0-1.415L4.094 8.03z"
-          clipRule="evenodd"
+          fillRule='evenodd'
+          d='M19.907 15.234l-2.826-2.827a1 1 0 0 0-1.414 0l-1.456 1.457a1 1 0 0 0 0 1.415l4.081 4.08a1 1 0 0 0 1.414 0l2.276-2.275a1 1 0 0 0 0-1.414l-3.108-3.107a1 1 0 0 0-1.414 0zM4.094 8.03l3.107 3.107a1 1 0 0 0 1.414 0l1.456-1.457a1 1 0 0 0 0-1.415L5.83 3.68a1 1 0 0 0-1.414 0L2.14 5.957a1 1 0 0 0 0 1.414l4.08 4.08a1 1 0 0 0 1.414 0l1.457-1.456a1 1 0 0 0 0-1.415L4.094 8.03z'
+          clipRule='evenodd'
         />
       </svg>
-    ),
-  },  
+    )
+  },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/niket-girdhar-068858250/',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg fill='currentColor' viewBox='0 0 448 512' {...props}>
-        <path
-          fill='currentColor'
-          d='M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z'
-        ></path>
+        <path d='M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z' />
       </svg>
     )
   },
@@ -78,35 +75,40 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className='py-8'>
-      <div className='container max-w-3xl'>
-        <div className='md:flex md:items-center md:justify-between'>
-          <div className='flex justify-center space-x-6 md:order-2'>
-            {navigation.map(item => (
-              <a
-                key={item.name}
-                href={item.href}
-                target='_blank'
-                rel='noreferrer noopener'
-                className='text-muted-foreground hover:text-foreground'
-              >
-                <span className='sr-only'>{item.name}</span>
-                <item.icon aria-hidden='true' className='h-5 w-5' />
-              </a>
-            ))}
-          </div>
-          <div className="mt-8 md:order-1 md:mt-0">
-  <p className="text-center text-xs leading-5 text-muted-foreground">
-    &copy; {new Date().getFullYear()} Niket Girdhar - NT
-  </p>
-</div>
+    <footer className='pb-10 pt-6'>
+      <div className='container max-w-6xl'>
+        <div className='rounded-[2rem] border border-white/60 bg-white/65 px-6 py-8 shadow-[0_20px_60px_-35px_rgba(76,128,131,0.32)] backdrop-blur-xl'>
+          <div className='flex flex-col gap-6 md:flex-row md:items-center md:justify-between'>
+            <div className='space-y-2'>
+              <p className='text-xs uppercase tracking-[0.3em] text-muted-foreground'>
+                Let&apos;s build something thoughtful
+              </p>
+              <p className='max-w-xl text-sm text-muted-foreground'>
+                A softer, more interactive portfolio experience with the same personality underneath.
+              </p>
+            </div>
 
+            <div className='flex flex-wrap items-center gap-3 md:justify-end'>
+              {navigation.map(item => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target='_blank'
+                  rel='noreferrer noopener'
+                  className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/60 bg-background/80 text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground'
+                >
+                  <span className='sr-only'>{item.name}</span>
+                  <item.icon aria-hidden='true' className='h-5 w-5' />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <p className='mt-8 text-center text-xs leading-5 text-muted-foreground'>
+            &copy; {new Date().getFullYear()} Niket Girdhar. Designed for clarity, softness, and easier exploration.
+          </p>
         </div>
       </div>
     </footer>
   )
 }
-
-
-
-

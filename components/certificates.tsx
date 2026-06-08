@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+
+import TagList from '@/components/tag-list'
 import { CertificateMetadata } from '@/lib/certificates'
 import { formatDate } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 
 export default function Certificates({
   certificates
@@ -10,50 +11,45 @@ export default function Certificates({
   certificates: CertificateMetadata[]
 }) {
   return (
-    <>
-      <ul className='grid grid-cols-1 gap-8 sm:grid-cols-2'>
-        {certificates.map(certificate => (
-          <li key={certificate.slug} className='group relative'>
-            <Link href={`/certificates/${certificate.slug}`}>
-              {certificate.image && (
-                <div className='h-72 w-full overflow-hidden bg-muted sm:h-60'>
-                  <Image
-                    src={certificate.image}
-                    alt={certificate.title || 'Certificate image'}
-                    fill
-                    className='rounded-lg object-cover object-center transition-transform duration-500 group-hover:scale-105'
-                  />
-                </div>
-              )}
-              
-              <div className='absolute inset-[1px] rounded-lg bg-background/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
-              
-              <div className='absolute inset-x-0 bottom-0 translate-y-2 px-6 py-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100'>
-                <h2 className='title line-clamp-1 text-xl no-underline'>
-                  {certificate.title}
-                </h2>
-                <p className='line-clamp-1 text-sm text-muted-foreground'>
-                  {certificate.By}
-                </p>
-                <div className='line-clamp-8 text-sm text-muted-foreground'>
-                {certificate.skills && certificate.skills.length > 0 && (
-                  <div className='mt-6 flex flex-wrap gap-2'>
-                    {certificate.skills.map((skill, index) => (
-                      <Button key={index} variant="outline">
-                        {skill}
-                      </Button>
-                    ))}
-                  </div>
-                )}
+    <ul className='grid grid-cols-1 gap-5 lg:grid-cols-2'>
+      {certificates.map(certificate => (
+        <li key={certificate.slug}>
+          <Link href={`/certificates/${certificate.slug}`} className='soft-card group block h-full p-4'>
+            {certificate.image ? (
+              <div className='relative aspect-[16/10] overflow-hidden rounded-[1.5rem]'>
+                <Image
+                  src={certificate.image}
+                  alt={certificate.title || 'Certificate image'}
+                  fill
+                  className='object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+                />
               </div>
-                <p className='text-xs font-light text-muted-foreground'>
-                  {formatDate(certificate.publishedAt ?? 'Unknown date')}
+            ) : null}
+
+            <div className='mt-5'>
+              <div className='flex flex-wrap items-center justify-between gap-3'>
+                <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+                  Certification
                 </p>
+                {certificate.publishedAt ? (
+                  <span className='meta-pill text-xs text-muted-foreground'>
+                    {formatDate(certificate.publishedAt)}
+                  </span>
+                ) : null}
               </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+
+              <h3 className='mt-3 font-serif text-2xl font-semibold tracking-tight'>
+                {certificate.title}
+              </h3>
+              <p className='mt-2 text-sm text-muted-foreground'>
+                {certificate.By || certificate.author}
+              </p>
+
+              <TagList items={certificate.skills} className='mt-5' />
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
   )
 }

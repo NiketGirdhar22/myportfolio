@@ -1,71 +1,38 @@
-import Link from 'next/link'
-import Image from 'next/image'
-
-import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
+import DetailShell from '@/components/detail-shell'
 import { getPosts, getPostBySlug } from '@/lib/posts'
-import { ArrowLeftIcon } from '@radix-ui/react-icons'
+import { formatDate } from '@/lib/utils'
 import { notFound } from 'next/navigation'
-import RedirectButton from '@/components/RedirectButton'
 
 export async function generateStaticParams() {
   const posts = await getPosts()
-  const slugs = posts.map(post => ({ slug: post.slug }))
-
-  return slugs
+  return posts.map(post => ({ slug: post.slug }))
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const { slug } = params
-  const post = await getPostBySlug(slug)
+  const post = await getPostBySlug(params.slug)
 
   if (!post) {
     notFound()
   }
 
   const { metadata, content } = post
-  const { title, image, author, publishedAt, Github } = metadata
+  const { title, image, author, publishedAt, Github, summary } = metadata
 
   return (
-    <section className='pb-24 pt-32'>
-      <div className='container max-w-3xl'>
-        <Link
-          href='/posts'
-          className='mb-8 inline-flex items-center gap-2 text-sm font-light text-muted-foreground transition-colors hover:text-foreground'
-        >
-          <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to posts</span>
-        </Link>
-
-        {image && (
-          <div className='relative mb-6 h-96 w-full overflow-hidden rounded-lg'>
-            <Image
-              src={image}
-              alt={title || ''}
-              className='object-contain'
-              fill
-            />
-          </div>
-        )}
-
-        <header>
-          <h1 className='title'>{title}</h1>
-          <p className='mt-3 text-xs text-muted-foreground'>
-            {author} / {formatDate(publishedAt ?? '')}
-          </p>
-        </header>
-
-        <main className='prose mt-16 dark:prose-invert'>
-          <MDXContent source={content} />
-        </main>
-
-        {Github && (
-          <footer className='mt-16'>
-            <RedirectButton redirectUrl={Github} label="Check the GitHub Repo" />
-          </footer>
-        )}
-
-      </div>
-    </section>
+    <DetailShell
+      backHref='/posts'
+      backLabel='Back to posts'
+      eyebrow='Post'
+      title={title || ''}
+      summary={summary}
+      image={image}
+      imageAlt={title || ''}
+      meta={[author || '', publishedAt ? formatDate(publishedAt) : '']}
+      actions={Github ? [{ label: 'Check the GitHub repo', url: Github }] : []}
+      contentClassName='content-panel prose max-w-none'
+    >
+      <MDXContent source={content} />
+    </DetailShell>
   )
 }

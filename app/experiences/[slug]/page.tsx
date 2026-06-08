@@ -1,94 +1,65 @@
-import Link from 'next/link'
-import Image from 'next/image'
-
-import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
-import { getExperiences, getExperienceBySlug } from '@/lib/experiences'
-import { ArrowLeftIcon } from '@radix-ui/react-icons'
-import { notFound } from 'next/navigation'
+import DetailShell from '@/components/detail-shell'
 import RedirectButton from '@/components/RedirectButton'
-import { Button } from '@/components/ui/button'
+import TagList from '@/components/tag-list'
+import { getExperiences, getExperienceBySlug } from '@/lib/experiences'
+import { formatDate } from '@/lib/utils'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const experiences = await getExperiences()
-  const slugs = experiences.map(experience => ({ slug: experience.slug }))
-
-  return slugs
+  return experiences.map(experience => ({ slug: experience.slug }))
 }
 
 export default async function Experience({ params }: { params: { slug: string } }) {
-  const { slug } = params
-  const experience = await getExperienceBySlug(slug)
+  const experience = await getExperienceBySlug(params.slug)
 
   if (!experience) {
     notFound()
   }
 
   const { metadata, content } = experience
-  const { title, image, author, startDate, endDate, skills, documents } = metadata
-
-  const formattedStartDate = startDate ? formatDate(startDate) : 'No start date available'
-  const formattedEndDate = endDate ? formatDate(endDate) : 'No end date available'
+  const { title, image, author, startDate, endDate, skills, documents, summary } = metadata
 
   return (
-    <section className='pb-24 pt-32'>
-      <div className='container max-w-3xl'>
-        <Link
-          href='/experiences'
-          className='mb-8 inline-flex items-center gap-2 text-sm font-light text-muted-foreground transition-colors hover:text-foreground'
-        >
-          <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to experiences</span>
-        </Link>
-
-        {image && (
-          <div className='relative mb-6 h-96 w-full overflow-hidden rounded-lg'>
-            <Image
-              src={image}
-              alt={title || 'Experience Image'}
-              className='object-contain'
-              fill
-            />
+    <DetailShell
+      backHref='/experiences'
+      backLabel='Back to experiences'
+      eyebrow='Experience'
+      title={title || ''}
+      summary={summary}
+      image={image}
+      imageAlt={title || ''}
+      meta={[
+        author || '',
+        startDate ? formatDate(startDate) : '',
+        endDate ? formatDate(endDate) : ''
+      ]}
+      contentClassName='content-panel prose max-w-none'
+      aside={
+        <>
+          <div className='content-panel'>
+            <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+              Skills acquired
+            </p>
+            <TagList items={skills} className='mt-4' />
           </div>
-        )}
-
-        <header>
-          <h1 className='title'>{title}</h1>
-          <p className='mt-3 text-xs text-muted-foreground'>
-            {author && <span>{author} / </span>}
-            {startDate && <span>{formattedStartDate} - </span>}
-            {endDate && <span>{formattedEndDate}</span>}
-          </p>
-        </header>
-
-        <main className='prose mt-16 dark:prose-invert'>
-          <MDXContent source={content} />
-        </main>
-        
-        <div>
-        <p className='mt-8 font-light text-muted-foreground'>
-          Skills acquired: 
-        </p>
-        </div>
-        {skills && skills.length > 0 && (
-          <div className='mt-6 flex flex-wrap gap-2'>
-            {skills.map((skill, index) => (
-              <Button key={index} variant="outline">
-                {skill}
-              </Button>
-            ))}
-          </div>
-        )}
-
-        {documents && Object.keys(documents).length > 0 && (
-          <footer className='mt-16'>
-            {Object.entries(documents).map(([label, url]) => (
-              <RedirectButton key={label} redirectUrl={url} label={label} />
-            ))}
-          </footer>
-        )}
-
-      </div>
-    </section>
+          {documents && Object.keys(documents).length > 0 ? (
+            <div className='content-panel'>
+              <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+                Related links
+              </p>
+              <div className='mt-4 flex flex-wrap gap-3'>
+                {Object.entries(documents).map(([label, url]) => (
+                  <RedirectButton key={label} redirectUrl={url} label={label} />
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </>
+      }
+    >
+      <MDXContent source={content} />
+    </DetailShell>
   )
 }

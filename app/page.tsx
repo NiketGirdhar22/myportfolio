@@ -8,18 +8,18 @@ import RecentEvents from '@/components/recent-events'
 
 export default function Home() {
   return (
-    <section className='pb-24 pt-40'>
-      <div className='container max-w-3xl'>
+    <section className='page-frame'>
+      <div className='container max-w-6xl'>
         <Intro />
 
-        <RecentPosts />
-        <RecentProjects />
-        <RecentCertificates />
-        <RecentExperiences />
-        <RecentEvents />
-        <RecentPublications />
-
-
+        <div className='mt-10 space-y-8'>
+          <RecentProjects />
+          <RecentPosts />
+          <RecentExperiences />
+          <RecentCertificates />
+          <RecentEvents />
+          <RecentPublications />
+        </div>
       </div>
     </section>
   )

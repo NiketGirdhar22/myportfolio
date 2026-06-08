@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts'
 import Posts from '@/components/posts'
+import SectionShell from '@/components/section-shell'
 
 export default async function RecentPosts() {
   const posts = await getPosts(4)
@@ -8,18 +9,14 @@ export default async function RecentPosts() {
   const recentPosts = posts.slice(0, 2)
 
   return (
-    <section className='pb-24'>
-      <div>
-        <h2 className='title mb-12'>Recent posts</h2>
-        <Posts posts={recentPosts} />
-
-        <Link
-          href='/posts'
-          className='mt-8 inline-flex items-center gap-2 text-muted-foreground underline decoration-1 underline-offset-2 transition-colors hover:text-foreground'
-        >
-          <span>All posts</span>
-        </Link>
-      </div>
-    </section>
+    <SectionShell
+      eyebrow='Writing'
+      title='Recent posts'
+      description='Notes, explainers, and experiments shaped into something easier to revisit.'
+      href='/posts'
+      linkLabel='All posts'
+    >
+      <Posts posts={recentPosts} />
+    </SectionShell>
   )
 }

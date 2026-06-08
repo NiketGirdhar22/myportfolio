@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import TagList from '@/components/tag-list'
 import { ProjectMetadata } from '@/lib/projects'
 import { formatDate } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 
 export default function Projects({
   projects
@@ -11,44 +11,41 @@ export default function Projects({
   projects: ProjectMetadata[]
 }) {
   return (
-    <ul className='grid grid-cols-1 gap-8 sm:grid-cols-2'>
+    <ul className='grid grid-cols-1 gap-5 lg:grid-cols-2'>
       {projects.map(project => (
-        <li key={project.slug} className='group relative'>
-          <Link href={`/projects/${project.slug}`}>
-            {project.image && (
-              <div className='h-72 w-full overflow-hidden bg-muted sm:h-60'>
+        <li key={project.slug}>
+          <Link href={`/projects/${project.slug}`} className='soft-card group block h-full p-4'>
+            {project.image ? (
+              <div className='relative aspect-[16/10] overflow-hidden rounded-[1.5rem]'>
                 <Image
                   src={project.image}
                   alt={project.title || ''}
                   fill
-                  className='rounded-lg object-cover object-center transition-transform duration-500 group-hover:scale-105'
+                  className='object-cover transition-transform duration-500 group-hover:scale-[1.03]'
                 />
               </div>
-            )}
+            ) : null}
 
-            <div className='absolute inset-[1px] rounded-lg bg-background/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
+            <div className='mt-5'>
+              <div className='flex flex-wrap items-center justify-between gap-3'>
+                <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+                  Project
+                </p>
+                {project.publishedAt ? (
+                  <span className='meta-pill text-xs text-muted-foreground'>
+                    {formatDate(project.publishedAt)}
+                  </span>
+                ) : null}
+              </div>
 
-            <div className='absolute inset-x-0 bottom-0 translate-y-2 px-6 py-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100'>
-              <h2 className='title line-clamp-1 text-xl no-underline'>
+              <h3 className='mt-3 font-serif text-2xl font-semibold tracking-tight'>
                 {project.title}
-              </h2>
-              <p className='line-clamp-1 text-sm text-muted-foreground'>
+              </h3>
+              <p className='mt-3 line-clamp-3 text-sm leading-7 text-muted-foreground'>
                 {project.summary}
               </p>
-              <div className='line-clamp-8 text-sm text-muted-foreground'>
-                {project.tech && project.tech.length > 0 && (
-                  <div className='mt-6 flex flex-wrap gap-2'>
-                    {project.tech.map((tech, index) => (
-                      <Button key={index} variant="outline">
-                        {tech}
-                      </Button>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <p className='text-xs font-light text-muted-foreground'>
-                {formatDate(project.publishedAt ?? '')}
-              </p>
+
+              <TagList items={project.tech} className='mt-5' />
             </div>
           </Link>
         </li>

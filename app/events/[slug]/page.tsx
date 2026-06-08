@@ -1,124 +1,103 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
-
-import { formatDate } from '@/lib/utils'
-import MDXContent from '@/components/mdx-content'
-import { getEvents, getEventBySlug } from '@/lib/events'
-import { ArrowLeftIcon } from '@radix-ui/react-icons'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
+
+import MDXContent from '@/components/mdx-content'
+import DetailShell from '@/components/detail-shell'
 import RedirectButton from '@/components/RedirectButton'
-import { Button } from '@/components/ui/button'
+import TagList from '@/components/tag-list'
+import { getEvents, getEventBySlug } from '@/lib/events'
+import { formatDate } from '@/lib/utils'
 
 export async function generateStaticParams() {
   const events = await getEvents()
-  const slugs = events.map(event => ({ slug: event.slug }))
-  return slugs
+  return events.map(event => ({ slug: event.slug }))
 }
 
-// Helper to get all image paths from a public folder
 function getImagesFromPublicFolder(folderPath: string): string[] {
   const absolutePath = path.join(process.cwd(), 'public', folderPath)
 
   if (!fs.existsSync(absolutePath)) return []
+  if (!fs.statSync(absolutePath).isDirectory()) return []
 
-  const stats = fs.statSync(absolutePath)
-  if (!stats.isDirectory()) return []  // Not a folder, so return empty list
-
-  const files = fs.readdirSync(absolutePath)
-
-  return files
+  return fs
+    .readdirSync(absolutePath)
     .filter(file => /\.(jpe?g|png|gif|webp)$/i.test(file))
-    .map(file => path.join(folderPath, file))  // relative to public
+    .map(file => path.join(folderPath, file))
 }
 
 export default async function Event({ params }: { params: { slug: string } }) {
-  const { slug } = params
-  const event = await getEventBySlug(slug)
+  const event = await getEventBySlug(params.slug)
 
   if (!event) {
     notFound()
   }
 
   const { metadata, content } = event
-  const { title, image, author, startDate, endDate, skills, documents } = metadata
-
-  const formattedStartDate = startDate ? formatDate(startDate) : 'No start date available'
-  const formattedEndDate = endDate ? formatDate(endDate) : 'No end date available'
-
-  // Get images from the folder specified in `image` field
+  const { title, image, author, startDate, endDate, skills, documents, summary } = metadata
   const imagePaths = image ? getImagesFromPublicFolder(image) : []
 
   return (
-    <section className='pb-24 pt-32'>
-      <div className='container max-w-5xl'>
-        <Link
-          href='/events'
-          className='mb-8 inline-flex items-center gap-2 text-sm font-light text-muted-foreground transition-colors hover:text-foreground'
-        >
-          <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to events</span>
-        </Link>
-
-        <header>
-          <h1 className='title'>{title}</h1>
-          <p className='mt-3 text-xs text-muted-foreground'>
-            {author && <span>{author} / </span>}
-            {startDate && <span>{formattedStartDate} - </span>}
-            {endDate && <span>{formattedEndDate}</span>}
-          </p>
-        </header>
-
-        <main className='prose mt-16 dark:prose-invert'>
-          <MDXContent source={content} />
-        </main>
-
-        <div>
-          <p className='mt-8 font-light text-muted-foreground'>
-            Skills acquired:
-          </p>
-        </div>
-
-        {skills && skills.length > 0 && (
-          <div className='mt-6 flex flex-wrap gap-2'>
-            {skills.map((skill, index) => (
-              <Button key={index} variant="outline">
-                {skill}
-              </Button>
-            ))}
+    <DetailShell
+      backHref='/events'
+      backLabel='Back to events'
+      eyebrow='Event'
+      title={title || ''}
+      summary={summary}
+      meta={[
+        author || '',
+        startDate ? formatDate(startDate) : '',
+        endDate ? formatDate(endDate) : ''
+      ]}
+      contentClassName='space-y-8'
+      aside={
+        <>
+          <div className='content-panel'>
+            <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+              Skills acquired
+            </p>
+            <TagList items={skills} className='mt-4' />
           </div>
-        )}
-    <div>
-          <p className='mt-8 font-light text-muted-foreground'>
-            From the Event
-          </p>
-        </div>
+          {documents && Object.keys(documents).length > 0 ? (
+            <div className='content-panel'>
+              <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+                Related links
+              </p>
+              <div className='mt-4 flex flex-wrap gap-3'>
+                {Object.entries(documents).map(([label, url]) => (
+                  <RedirectButton key={label} redirectUrl={url} label={label} />
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </>
+      }
+    >
+      <div className='content-panel prose max-w-none'>
+        <MDXContent source={content} />
+      </div>
 
-{imagePaths.length > 0 && (
-          <div className='columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 mt-10'>
+      {imagePaths.length > 0 ? (
+        <div className='content-panel'>
+          <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+            From the event
+          </p>
+          <div className='mt-6 columns-1 gap-4 space-y-4 md:columns-2'>
             {imagePaths.map((src, idx) => (
-              <div key={idx} className='break-inside-avoid overflow-hidden rounded-lg'>
+              <div key={idx} className='overflow-hidden rounded-[1.5rem]'>
                 <Image
                   src={src}
-                  alt={`Event Image ${idx + 1}`}
+                  alt={`Event image ${idx + 1}`}
                   width={800}
                   height={600}
-                  className='w-full h-auto object-cover rounded-lg'
+                  className='h-auto w-full object-cover'
                 />
               </div>
             ))}
           </div>
-        )}
-
-        {documents && Object.keys(documents).length > 0 && (
-          <footer className='mt-16'>
-            {Object.entries(documents).map(([label, url]) => (
-              <RedirectButton key={label} redirectUrl={url} label={label} />
-            ))}
-          </footer>
-        )}
-      </div>
-    </section>
+        </div>
+      ) : null}
+    </DetailShell>
   )
 }

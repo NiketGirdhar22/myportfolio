@@ -1,28 +1,33 @@
 import Link from 'next/link'
+
 import { PostMetadata } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 
 export default function Posts({ posts }: { posts: PostMetadata[] }) {
   return (
-    <ul className='flex flex-col gap-8'>
+    <ul className='grid gap-4'>
       {posts.map(post => (
-        <li key={post.slug} className='flex flex-col gap-4'>
-          <Link
-            href={`/posts/${post.slug}`}
-            className='flex flex-col justify-between gap-x-4 gap-y-1 sm:flex-row'
-          >
-            <div className='max-w-lg'>
-              <p className='text-lg font-semibold'>{post.title}</p>
-              <p className='mt-1 line-clamp-2 text-sm font-light text-muted-foreground'>
-                {post.summary}
-              </p>
-            </div>
+        <li key={post.slug}>
+          <Link href={`/posts/${post.slug}`} className='soft-card block'>
+            <div className='flex flex-col gap-4 md:flex-row md:items-start md:justify-between'>
+              <div className='max-w-2xl'>
+                <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
+                  Post
+                </p>
+                <h3 className='mt-3 font-serif text-2xl font-semibold tracking-tight'>
+                  {post.title}
+                </h3>
+                <p className='mt-3 line-clamp-3 text-sm leading-7 text-muted-foreground'>
+                  {post.summary}
+                </p>
+              </div>
 
-            {post.publishedAt && (
-              <p className='mt-1 text-sm font-light'>
-                {formatDate(post.publishedAt)}
-              </p>
-            )}
+              {post.publishedAt ? (
+                <p className='meta-pill text-xs text-muted-foreground'>
+                  {formatDate(post.publishedAt)}
+                </p>
+              ) : null}
+            </div>
           </Link>
         </li>
       ))}

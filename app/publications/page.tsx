@@ -1,16 +1,17 @@
 import Publications from '@/components/publications'
 import { getPublications } from '@/lib/publications'
+import PageShell from '@/components/page-shell'
 
 export default async function PublicationsPage() {
   const publications = await getPublications()
 
   return (
-    <section className='pb-24 pt-40'>
-      <div className='container max-w-3xl'>
-        <h1 className='title mb-12'>Publications</h1>
-
+    <PageShell
+      eyebrow='Research archive'
+      title='Publications'
+      description='Published work presented with more breathing room and clearer visual hierarchy.'
+    >
         <Publications publications={publications} />
-      </div>
-    </section>
+    </PageShell>
   )
 }
