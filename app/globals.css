@@ -4,179 +4,169 @@
 
 @layer base {
   :root {
-    --background: 190 45% 98%;
-    --foreground: 193 33% 18%;
-    --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
-    --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-    --card: 0 0% 100%;
-    --card-foreground: 193 33% 18%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 193 33% 18%;
-    --primary: 187 42% 35%;
-    --primary-foreground: 190 45% 98%;
-    --secondary: 180 37% 93%;
-    --secondary-foreground: 193 33% 18%;
-    --muted: 164 32% 94%;
-    --muted-foreground: 189 18% 40%;
-    --accent: 196 51% 94%;
-    --accent-foreground: 193 33% 18%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 60 6% 7%;
+    --foreground: 48 24% 96%;
+    --font-sans: "Avenir Next", "Segoe UI", sans-serif;
+    --font-serif: "Baskerville", "Times New Roman", serif;
+    --card: 60 5% 9%;
+    --card-foreground: 48 24% 96%;
+    --popover: 60 5% 9%;
+    --popover-foreground: 48 24% 96%;
+    --primary: 79 83% 56%;
+    --primary-foreground: 60 6% 7%;
+    --secondary: 60 5% 13%;
+    --secondary-foreground: 48 24% 96%;
+    --muted: 60 5% 13%;
+    --muted-foreground: 48 14% 84%;
+    --accent: 79 45% 16%;
+    --accent-foreground: 79 83% 67%;
+    --destructive: 0 70% 52%;
     --destructive-foreground: 0 0% 98%;
-    --border: 188 24% 84%;
-    --input: 188 24% 84%;
-    --ring: 185 38% 49%;
-    --radius: 1.5rem;
-    --chart-1: 188 43% 48%;
-    --chart-2: 161 37% 46%;
-    --chart-3: 203 40% 33%;
-    --chart-4: 172 47% 67%;
-    --chart-5: 198 62% 74%;
+    --border: 55 6% 20%;
+    --input: 55 6% 20%;
+    --ring: 79 83% 56%;
+    --radius: 0.25rem;
 
-    --sh-identifier: #354150;
-    --sh-keyword: #f47067;
-    --sh-string: #00a99a;
-    --sh-class: #8d85ff;
-    --sh-property: #4e8fdf;
-    --sh-entity: #6eafad;
-    --sh-jsxliterals: #bf7db6;
-    --sh-sign: #8996a3;
-    --sh-comment: #a19595;
+    --sh-identifier: #d5d2c7;
+    --sh-keyword: #d8ff5f;
+    --sh-string: #9bd5c0;
+    --sh-class: #f1c67a;
+    --sh-property: #aebcf2;
+    --sh-entity: #d8ff5f;
+    --sh-jsxliterals: #cf9cdb;
+    --sh-sign: #7d7d74;
+    --sh-comment: #77776f;
   }
 
-}
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
   body {
     @apply bg-background text-foreground;
-    background-image:
-      radial-gradient(circle at top left, rgba(205, 241, 242, 0.92), transparent 30%),
-      radial-gradient(circle at top right, rgba(212, 244, 230, 0.82), transparent 26%),
-      linear-gradient(180deg, rgba(246, 253, 253, 0.98), rgba(239, 249, 247, 1));
     min-height: 100vh;
+    background-image:
+      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px),
+      radial-gradient(circle at 70% -10%, rgba(176, 242, 43, .07), transparent 30%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
   }
 
-  .title {
-    @apply font-serif text-3xl font-semibold tracking-tight text-foreground md:text-4xl;
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: .025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .prose pre {
-    @apply overflow-x-auto rounded-[1.5rem] bg-accent px-5 py-4 text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.35)];
-  }
+  ::selection { color: #11110f; background: #b7f32d; }
 
-  .prose code {
-    @apply rounded-lg bg-accent/70 px-1.5 py-0.5;
+  .title { @apply text-3xl font-medium tracking-[-0.04em] text-foreground md:text-4xl; }
+  .prose {
+    @apply prose-headings:font-sans prose-headings:tracking-[-0.03em];
+    color: hsl(var(--muted-foreground));
+    --tw-prose-body: hsl(var(--muted-foreground));
+    --tw-prose-headings: hsl(var(--foreground));
+    --tw-prose-lead: hsl(var(--muted-foreground));
+    --tw-prose-links: hsl(var(--primary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-counters: hsl(var(--muted-foreground));
+    --tw-prose-bullets: hsl(var(--foreground));
+    --tw-prose-hr: hsl(var(--border));
+    --tw-prose-quotes: hsl(var(--foreground));
+    --tw-prose-quote-borders: hsl(var(--primary));
+    --tw-prose-captions: hsl(var(--muted-foreground));
+    --tw-prose-code: hsl(var(--foreground));
+    --tw-prose-pre-code: hsl(var(--foreground));
+    --tw-prose-pre-bg: hsl(var(--card));
+    --tw-prose-th-borders: hsl(var(--border));
+    --tw-prose-td-borders: hsl(var(--border));
   }
-
-  .prose pre code {
-    @apply p-0;
-    line-height: 1.75;
+  .prose :where(p, li, h1, h2, h3, h4, strong, em, blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    color: inherit;
   }
-
-  .prose code span {
-    @apply font-medium;
+  .prose :where(h1, h2, h3, h4, strong):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    color: hsl(var(--foreground));
   }
-
-  ::selection {
-    background: rgba(152, 220, 215, 0.45);
+  .prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    color: hsl(var(--primary));
   }
+  .prose pre { @apply overflow-x-auto rounded-sm border border-border bg-card px-5 py-4 text-sm; }
+  .prose code { @apply rounded-sm bg-accent/50 px-1.5 py-0.5; }
+  .prose pre code { @apply bg-transparent p-0; line-height: 1.75; }
+  .prose table { @apply min-w-full border-separate border-spacing-0 text-left text-sm; }
+  .prose thead th { @apply border-b border-border bg-secondary px-4 py-3 font-semibold text-foreground; }
+  .prose tbody td { @apply border-b border-border px-4 py-3 align-top text-muted-foreground; }
 }
 
 @layer components {
-  .page-frame {
-    @apply relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40;
-  }
-
-  .page-frame::before {
-    content: '';
-    position: absolute;
-    inset: 2.5rem auto auto 1rem;
-    height: 14rem;
-    width: 14rem;
-    border-radius: 9999px;
-    background: rgba(198, 238, 238, 0.6);
-    filter: blur(8px);
-    pointer-events: none;
-  }
-
-  .page-frame::after {
-    content: '';
-    position: absolute;
-    inset: 6rem 1rem auto auto;
-    height: 16rem;
-    width: 16rem;
-    border-radius: 9999px;
-    background: rgba(204, 241, 226, 0.56);
-    filter: blur(10px);
-    pointer-events: none;
-  }
+  .page-frame { @apply relative pb-16 pt-28 md:pb-24 md:pt-36; }
 
   .page-hero {
-    @apply relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-white/[0.68] px-6 py-8 shadow-[0_30px_80px_-40px_rgba(57,116,120,0.24)] backdrop-blur-xl md:px-10 md:py-12;
+    @apply relative border-y border-border py-12 md:py-16;
   }
-
-  .page-eyebrow {
-    @apply text-xs uppercase tracking-[0.34em] text-muted-foreground;
+  .page-hero::after {
+    content: 'INFERENCE / BUILD / SHIP';
+    @apply absolute right-0 top-4 hidden font-mono text-[10px] tracking-[0.22em] text-muted-foreground md:block;
   }
-
+  .page-eyebrow, .section-eyebrow {
+    @apply font-mono text-[10px] uppercase tracking-[0.24em] text-primary;
+  }
   .page-title {
-    @apply mt-4 max-w-4xl font-serif text-5xl font-semibold leading-none tracking-tight text-foreground sm:text-6xl;
+    @apply mt-5 max-w-5xl text-5xl font-medium leading-[.98] tracking-[-0.055em] text-foreground sm:text-6xl lg:text-7xl;
   }
+  .page-description { @apply mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg; }
 
-  .page-description {
-    @apply mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg;
-  }
-
-  .section-panel {
-    @apply rounded-[2.25rem] border border-white/60 bg-white/[0.68] p-6 shadow-[0_24px_70px_-38px_rgba(57,116,120,0.22)] backdrop-blur-xl md:p-8;
-  }
-
-  .section-eyebrow {
-    @apply text-xs uppercase tracking-[0.28em] text-muted-foreground;
-  }
-
-  .section-title {
-    @apply mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground md:text-4xl;
-  }
-
-  .section-description {
-    @apply mt-3 text-sm leading-7 text-muted-foreground md:text-base;
-  }
-
-  .section-link {
-    @apply inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/[0.85] px-4 py-2 text-sm text-foreground shadow-[0_14px_30px_-24px_rgba(57,116,120,0.28)] transition-all duration-300 hover:-translate-y-0.5;
+  .section-panel { @apply border-t border-border py-10 md:py-14; }
+  .section-title { @apply mt-3 text-3xl font-medium tracking-[-0.04em] text-foreground md:text-4xl; }
+  .section-description { @apply mt-3 text-sm leading-7 text-muted-foreground md:text-base; }
+  .section-link, .back-link {
+    @apply inline-flex items-center gap-2 rounded-sm border border-border bg-card px-4 py-2 font-mono text-xs uppercase tracking-[0.08em] text-foreground transition-all duration-200 hover:border-primary hover:text-primary;
   }
 
   .soft-card {
-    @apply rounded-[2rem] border border-white/60 bg-white/[0.72] p-5 shadow-[0_20px_55px_-38px_rgba(57,116,120,0.28)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_-40px_rgba(57,116,120,0.34)];
+    @apply relative rounded-sm border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:bg-secondary/70;
   }
+  .soft-card::before {
+    content: '';
+    @apply absolute left-0 top-0 h-px w-8 bg-primary transition-all duration-300;
+  }
+  .soft-card:hover::before { @apply w-20; }
+  .soft-tag { @apply inline-flex items-center rounded-sm border border-border bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground; }
+  .meta-pill { @apply inline-flex items-center rounded-sm border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.06em]; }
+  .detail-grid { @apply mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start; }
+  .media-panel { @apply rounded-sm border border-border bg-card p-2; }
+  .project-media-frame { @apply relative aspect-[16/10] overflow-hidden rounded-sm border border-border bg-[#e8e7df]; }
+  .content-panel { @apply rounded-sm border border-border bg-card p-6 md:p-8; }
+}
 
-  .soft-tag {
-    @apply inline-flex items-center rounded-full border border-border/70 bg-background/[0.88] px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-muted-foreground;
-  }
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero > *, .section-panel { animation: reveal .7s cubic-bezier(.2,.8,.2,1) both; }
+  .section-panel:nth-child(2) { animation-delay: .08s; }
+  .section-panel:nth-child(3) { animation-delay: .14s; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+}
 
-  .meta-pill {
-    @apply inline-flex items-center rounded-full border border-border/70 bg-background/[0.88] px-3 py-1.5;
-  }
+/* Final MDX color contract. Kept outside Tailwind layers so Typography's
+   generated prose palette cannot override the dark-theme content colors. */
+.content-panel.prose {
+  color: #deddd5 !important;
+}
 
-  .back-link {
-    @apply inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/[0.88] px-4 py-2 text-sm text-muted-foreground shadow-[0_14px_30px_-24px_rgba(57,116,120,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground;
-  }
+.content-panel.prose :where(p, li, dt, dd, figcaption, blockquote) {
+  color: #deddd5 !important;
+}
 
-  .detail-grid {
-    @apply mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start;
-  }
+.content-panel.prose :where(h1, h2, h3, h4, h5, h6, strong, th) {
+  color: #f7f6ef !important;
+}
 
-  .media-panel {
-    @apply rounded-[2.25rem] border border-white/60 bg-white/[0.68] p-3 shadow-[0_24px_70px_-38px_rgba(57,116,120,0.22)] backdrop-blur-xl;
-  }
+.content-panel.prose :where(a) {
+  color: #b7f32d !important;
+}
 
-  .content-panel {
-    @apply rounded-[2rem] border border-white/60 bg-white/[0.72] p-6 shadow-[0_24px_70px_-38px_rgba(57,116,120,0.22)] backdrop-blur-xl md:p-8;
-  }
+.content-panel.prose :where(hr) {
+  border-color: hsl(var(--border)) !important;
 }

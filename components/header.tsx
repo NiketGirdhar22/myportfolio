@@ -5,13 +5,11 @@ import Link from 'next/link'
 
 const menuItems = [
   'resume',
-  'posts',
-  'experiences',
   'projects',
-  'certificates',
-  'events',
+  'experiences',
+  'posts',
   'publications',
-  'recommendations'
+  'recommendations',
 ]
 
 export default function Header() {
@@ -20,13 +18,13 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   return (
-    <header className='fixed inset-x-0 top-0 z-50 px-4 pt-4'>
-      <nav className='mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/60 bg-background/80 px-5 py-3 shadow-[0_20px_60px_-30px_rgba(76,128,131,0.32)] backdrop-blur-xl'>
+    <header className='fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl'>
+      <nav className='container mx-auto flex max-w-6xl items-center justify-between px-8 py-4'>
         <Link href='/' className='flex items-center gap-3'>
-          <span className='flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(224,245,246,0.96),rgba(212,239,231,0.96))] font-serif text-xl font-semibold text-foreground shadow-[0_10px_30px_-18px_rgba(61,115,120,0.45)]'>
+          <span className='flex h-9 w-9 items-center justify-center border border-primary font-mono text-xs font-semibold text-primary'>
             NT
           </span>
-          <span className='hidden text-sm uppercase tracking-[0.28em] text-muted-foreground md:inline-flex'>
+          <span className='hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground md:inline-flex'>
             Niket Girdhar
           </span>
         </Link>
@@ -36,7 +34,7 @@ export default function Header() {
             <li key={item} className='list-none'>
               <Link
                 href={`/${item}`}
-                className='rounded-full px-4 py-2 text-sm text-muted-foreground transition-all duration-300 hover:bg-white/80 hover:text-foreground'
+                className='px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-muted-foreground transition-colors hover:text-primary'
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </Link>
@@ -47,7 +45,8 @@ export default function Header() {
         <div className='flex items-center gap-3'>
           <button
             onClick={toggleMenu}
-            className='inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-white/70 text-muted-foreground transition-colors hover:text-foreground lg:hidden'
+            aria-label='Toggle navigation'
+            className='inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-primary lg:hidden'
           >
             {isMenuOpen ? (
               <svg className='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -63,15 +62,15 @@ export default function Header() {
       </nav>
 
       {isMenuOpen ? (
-        <div className='mx-auto mt-3 max-w-6xl px-1 lg:hidden'>
-          <div className='rounded-[2rem] border border-white/60 bg-background/90 p-4 shadow-[0_20px_60px_-30px_rgba(76,128,131,0.32)] backdrop-blur-xl'>
+        <div className='mx-auto max-w-6xl border-t border-border px-4 lg:hidden'>
+          <div className='bg-background/95 p-4 backdrop-blur-xl'>
             <ul className='grid gap-2'>
               {menuItems.map(item => (
                 <li key={item} className='list-none'>
                   <Link
                     href={`/${item}`}
                     onClick={() => setIsMenuOpen(false)}
-                    className='block rounded-2xl px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-white/80 hover:text-foreground'
+                    className='block border-b border-border px-4 py-3 font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground transition-colors hover:text-primary'
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </Link>

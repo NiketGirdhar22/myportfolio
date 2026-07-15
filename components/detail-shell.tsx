@@ -87,12 +87,12 @@ export default function DetailShell({
 
           {image ? (
             <div className='media-panel'>
-              <div className='relative aspect-[4/3] overflow-hidden rounded-[2rem]'>
+              <div className='project-media-frame aspect-[4/3] rounded-[2rem]'>
                 <Image
                   src={image}
                   alt={imageAlt || title}
                   fill
-                  className='object-cover'
+                  className='object-contain p-5'
                 />
               </div>
             </div>

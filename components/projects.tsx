@@ -16,12 +16,12 @@ export default function Projects({
         <li key={project.slug}>
           <Link href={`/projects/${project.slug}`} className='soft-card group block h-full p-4'>
             {project.image ? (
-              <div className='relative aspect-[16/10] overflow-hidden rounded-[1.5rem]'>
+              <div className='project-media-frame'>
                 <Image
                   src={project.image}
                   alt={project.title || ''}
                   fill
-                  className='object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+                  className='object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]'
                 />
               </div>
             ) : null}

@@ -75,16 +75,16 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className='pb-10 pt-6'>
+    <footer className='border-t border-border py-10'>
       <div className='container max-w-6xl'>
-        <div className='rounded-[2rem] border border-white/60 bg-white/65 px-6 py-8 shadow-[0_20px_60px_-35px_rgba(76,128,131,0.32)] backdrop-blur-xl'>
+        <div>
           <div className='flex flex-col gap-6 md:flex-row md:items-center md:justify-between'>
             <div className='space-y-2'>
               <p className='text-xs uppercase tracking-[0.3em] text-muted-foreground'>
-                Let&apos;s build something thoughtful
+                Have a hard problem? Let&apos;s talk.
               </p>
               <p className='max-w-xl text-sm text-muted-foreground'>
-                A softer, more interactive portfolio experience with the same personality underneath.
+                Interested in applied ML, Python systems, and ambitious engineering teams.
               </p>
             </div>
 
@@ -95,7 +95,7 @@ export default function Footer() {
                   href={item.href}
                   target='_blank'
                   rel='noreferrer noopener'
-                  className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/60 bg-background/80 text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground'
+                  className='inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-card text-muted-foreground transition-all duration-200 hover:border-primary hover:text-primary'
                 >
                   <span className='sr-only'>{item.name}</span>
                   <item.icon aria-hidden='true' className='h-5 w-5' />
@@ -105,7 +105,7 @@ export default function Footer() {
           </div>
 
           <p className='mt-8 text-center text-xs leading-5 text-muted-foreground'>
-            &copy; {new Date().getFullYear()} Niket Girdhar. Designed for clarity, softness, and easier exploration.
+            &copy; {new Date().getFullYear()} Niket Girdhar. Built with Next.js, MDX, and an unreasonable attention to detail.
           </p>
         </div>
       </div>

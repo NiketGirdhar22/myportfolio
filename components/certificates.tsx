@@ -16,12 +16,12 @@ export default function Certificates({
         <li key={certificate.slug}>
           <Link href={`/certificates/${certificate.slug}`} className='soft-card group block h-full p-4'>
             {certificate.image ? (
-              <div className='relative aspect-[16/10] overflow-hidden rounded-[1.5rem]'>
+              <div className='project-media-frame'>
                 <Image
                   src={certificate.image}
                   alt={certificate.title || 'Certificate image'}
                   fill
-                  className='object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+                  className='object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]'
                 />
               </div>
             ) : null}

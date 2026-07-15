@@ -28,7 +28,7 @@ export default function Resume() {
           </div>
           <div className="media-panel max-w-[260px]">
             <Image
-              className="aspect-[4/5] rounded-[1.5rem] object-cover"
+              className="aspect-[4/5] rounded-[1.5rem] object-contain bg-accent/35 p-3"
               src={authorImage}
               alt="Niket Girdhar"
               width={260}
@@ -74,7 +74,7 @@ export default function Resume() {
           <h2 className="title no-underline">Links</h2>
           <div className="mt-6">
             <RedirectButton
-              redirectUrl="https://drive.google.com/file/d/1wUPKCJQYg7cYeecF-osO_QM_TJYlz0gl/view?usp=share_link"
+              redirectUrl="https://drive.google.com/file/d/171TEh5ZXcU-EmhTi9I4NE5tn0NLFer8L/view?usp=sharing"
               label="View my Resume"
             />
           </div>

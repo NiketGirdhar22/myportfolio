@@ -35,7 +35,7 @@ export default function RedirectButton({ redirectUrl, label, newWindow = 'Yes' }
       size="sm"
       variant="outline"
       onClick={handleClick}
-      className="items-center gap-2 border-border/60 bg-white/80 px-5 hover:-translate-y-0.5 hover:bg-white"
+      className="items-center gap-2 border-white/80 bg-white/90 px-5 text-[#10110d] hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#10110d] focus-visible:text-[#10110d]"
     >
       <span className="font-medium">{label}</span>
       <span className="sr-only">Redirect to {redirectUrl}</span>

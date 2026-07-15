@@ -91,7 +91,7 @@ export default async function Event({ params }: { params: { slug: string } }) {
                   alt={`Event image ${idx + 1}`}
                   width={800}
                   height={600}
-                  className='h-auto w-full object-cover'
+                  className='h-auto w-full object-contain'
                 />
               </div>
             ))}

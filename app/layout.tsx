@@ -6,8 +6,8 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
-  title: 'Niket Girdhar',
-  description: 'Niket Girdhar - NT',
+  title: 'Niket Girdhar - NT',
+  description: 'ML engineer building applied AI products, reliable Python systems, and practical machine learning tools.',
   metadataBase: new URL('https://www.niketgirdhar.in'),
   icons: {
     icon: [

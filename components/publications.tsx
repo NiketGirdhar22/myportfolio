@@ -19,12 +19,12 @@ export default function Publications({
         <li key={publication.slug}>
           <Link href={`/publications/${publication.slug}`} className='soft-card group block h-full p-4'>
             {publication.image ? (
-              <div className='relative aspect-[16/10] overflow-hidden rounded-[1.5rem]'>
+              <div className='project-media-frame'>
                 <Image
                   src={publication.image}
                   alt={publication.title || 'Publication image'}
                   fill
-                  className='object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+                  className='object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]'
                 />
               </div>
             ) : null}

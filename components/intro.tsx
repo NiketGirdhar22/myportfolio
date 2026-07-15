@@ -8,10 +8,10 @@ import { Button } from '@/components/ui/button'
 
 const focusAreas = [
   'Python',
+  'PyTorch',
   'Generative AI',
-  'Applied ML',
-  'Developer Tooling',
-  'Community Building'
+  'RAG Systems',
+  'MLOps'
 ]
 
 const quickStats = [
@@ -23,16 +23,15 @@ const quickStats = [
 export default function Intro() {
   return (
     <section className='page-hero overflow-visible'>
-      <div className='grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center'>
+      <div className='grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-end'>
         <div>
-          <p className='page-eyebrow'>Portfolio / selected work</p>
+          <p className='page-eyebrow'>ML engineer / Python developer</p>
           <h1 className='page-title'>
-            Hi, I&apos;m Niket. I build things with Python and write about it.
+            Building intelligent systems that work <span className='text-primary'>beyond the demo.</span>
           </h1>
           <p className='page-description max-w-3xl'>
-            I&apos;m Niket Girdhar, a Python developer exploring AI systems, practical
-            engineering, and community-led learning. This redesign keeps things
-            light, clearer to navigate, and easier to spend time with.
+            I&apos;m Niket Girdhar — an ML engineer focused on applied AI, reliable
+            Python systems, and turning research ideas into useful products.
           </p>
 
           <div className='mt-8 flex flex-wrap gap-2'>
@@ -58,19 +57,19 @@ export default function Intro() {
           <div className='mt-10 grid gap-4 sm:grid-cols-3'>
             {quickStats.map(stat => (
               <div key={stat.label} className='soft-card p-4'>
-                <p className='font-serif text-3xl font-semibold'>{stat.value}</p>
-                <p className='mt-2 text-sm text-muted-foreground'>{stat.label}</p>
+                <p className='font-mono text-3xl text-primary'>{stat.value}</p>
+                <p className='mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground'>{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className='relative mx-auto w-full max-w-[320px]'>
-          <div className='media-panel rotate-[-4deg]'>
-            <div className='rounded-[1.75rem] bg-[linear-gradient(145deg,rgba(255,240,235,0.95),rgba(220,236,255,0.92))] p-4'>
-              <div className='relative aspect-[4/5] overflow-hidden rounded-[1.5rem]'>
+        <div className='relative mx-auto w-full max-w-[300px] lg:mx-0 lg:ml-auto'>
+          <div className='media-panel'>
+            <div className='bg-[#d8d8cf] p-3'>
+              <div className='relative aspect-[4/5] overflow-hidden grayscale transition-all duration-500 hover:grayscale-0'>
                 <Image
-                  className='object-cover'
+                  className='object-contain p-2'
                   src={authorImage}
                   alt='Niket Girdhar'
                   fill
@@ -79,12 +78,9 @@ export default function Intro() {
               </div>
             </div>
           </div>
-          <div className='absolute -bottom-6 -left-6 soft-card max-w-[210px] p-4'>
-            <p className='text-xs uppercase tracking-[0.24em] text-muted-foreground'>
-              Based in India
-            </p>
-            <p className='mt-2 text-sm leading-6 text-muted-foreground'>
-              Building useful systems, writing things down, and sharing what I learn.
+          <div className='absolute -bottom-5 -left-4 border border-primary/40 bg-background px-4 py-3'>
+            <p className='font-mono text-[10px] uppercase tracking-[0.16em] text-primary'>
+              ● Available for opportunities
             </p>
           </div>
         </div>
